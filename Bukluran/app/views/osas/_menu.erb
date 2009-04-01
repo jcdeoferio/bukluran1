@@ -1,0 +1,10 @@
+<td class = "navigation_area">
+	<h3>Office of Student Activities</h3>
+	<ul>
+			<li><%= link_to 'Announcements', :controller => 'osas', :action => 'index' %>
+				<li><%= link_to 'Pending Applications', :controller => 'osas', :action => 'show' %>
+				<li><%= link_to 'New Organization Application', :controller => 'osas', :action => 'new_app'%>
+				<li><%= link_to 'Organization Listing', :controller => 'osas', :action => 'search' %>
+        <li><%= link_to 'Logout', :controller => 'main', :action => 'logout' %>
+	</ul>
+</td>

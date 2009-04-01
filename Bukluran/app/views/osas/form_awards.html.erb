@@ -1,0 +1,13 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Awards and Citations: <%= @orgdata.name %><hr></h2>
+	<% for award in @orgdata.awards %>
+		<h4><%=h award.name %></h4>
+		<p>
+			Classification: <%=h award.classification %> <br>
+			Arward-Giving Body: <%=h award.from %> <br>
+			Description: <%=h award.description %> <br>
+		</p>
+	<% end %>
+	<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @orgdata.id %>
+</td>

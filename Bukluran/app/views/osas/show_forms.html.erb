@@ -1,0 +1,35 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Application Forms: <%= @orgdata.name %> <hr></h2>
+	<h4>Status:
+		<% if @orgdata.status==-1 %>
+			Not Renewed
+		<% elsif @orgdata.status==0 %>
+			Application Waiting for Approval
+		<% elsif @orgdata.status==1 %>
+			Application Approved
+		<% end %>
+	</h4>
+	<div class = "content">
+	<ul>
+		<li><%= link_to 'Form 1 - Information Sheet', :action => 'form1', :id => @orgdata.id%>
+		<li><%= link_to 'Form 2 - Faculty Adviser, Head and Finance Statement', :action => 'form2', :id => @orgdata.id %>
+			<li>Form 5 - Accomplishment Report
+			<ul>
+				<li><%= link_to 'Awards', :action => 'form_awards', :id => @orgdata.id %>
+				<li><%= link_to 'Activities Reports', :action => 'form_reports', :id => @orgdata.id %>
+			</ul>
+		<li><%= link_to 'Form 7 - Acknowledgement', :action => 'form7', :id => @orgdata.id %>
+		</ul><br>
+		<%= link_to 'PDF Format', :format=> 'pdf', :id => @orgdata.id %>
+		<% if @orgdata.status == 0 %>
+			<table>
+			<th class = "buttons_table">
+				<%= button_to 'Approve', :action => 'approve', :id => @orgdata.id %></th>
+			<th class = "buttons_table">
+				<%= button_to 'Reject', :action => 'reject', :id => @orgdata.id %></th>
+			</table>
+		<% end %>
+	</ul>
+	</div>
+</td>

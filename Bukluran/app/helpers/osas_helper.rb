@@ -1,0 +1,2 @@
+module OsasHelper
+end

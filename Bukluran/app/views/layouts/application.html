@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type"
+content="text/html; charset=utf-8" />
+<title>Bukluran</title>
+<%= stylesheet_link_tag 'style' %>
+</head>
+<table class = "maintable">
+	<tr>
+		<th colspan = "2" class = "logo_area">
+		  <%= image_tag '/images/bukluran.png', 'size' => '300x80'%>
+		</th>
+	</tr>
+	<tr>
+		<div id='content'>
+		<%= yield %>
+		</div>
+	</tr>
+	<tr>
+		<th colspan = "2" class = "footer_area">
+			<a href="www.up.edu.ph">UP System</a>  | 
+      <a href="www.upd.edu.ph">UP Diliman</a> | 
+      <a href="http://www.upd.edu.ph/~ovcsa/osa/osa%20description.htm">UPD OSA</a><br>
+			Bukluran Online University Recognition Renewal System <br>
+			University of the Philippines, Diliman, Quezon city, PH<br>Bukluran Developers &oslash 
+
+edrosa &oslash hirono &oslash nacu &oslash lee &oslash uy
+		</th>
+	</tr>
+</table>
+</html>

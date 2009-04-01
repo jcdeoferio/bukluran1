@@ -1,0 +1,32 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Activities for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %><hr></h2>
+	<h4>Submit Report for <%= @event.name %></h4>
+	<div class = "content">
+	<p>
+		<% form_tag '/events/update' do %>
+			Select one:
+				<%= select("event", "category", [["Academic Activities"],["Advocacy and Extension Service"],["UP Community Service"],["Organization - Capacity Building Activities"]]) %>
+				<br><br>
+				
+				Title of Activity: <%= text_field 'event', 'name', "sixe"=>"50" %>
+				<br><br>
+				
+				Brief Description of Activity:<br>
+				<%= text_area 'event', 'description', "rows" => "3", "cols" => "60" %><br>
+				<br>
+				
+				Venue: <%= text_field 'event', 'venue', "sixe"=>"60" %>
+				<br><br>
+				
+				<%= date_select('event', 'date', :order => [:month, :day, :year])%>
+				<br><br>
+				
+				Person in Charge: <%= text_field 'event', 'event_head', "sixe"=>"50" %>
+				<br><br>    
+			<% session[:event_id] = @event.id %>
+			<%= submit_tag 'submit' %> 
+		<% end %>
+	</p>
+	</div>
+</td>

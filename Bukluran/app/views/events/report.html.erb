@@ -1,0 +1,14 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Activities for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %><hr></h2>
+	<h4>Submit Report for <%= @event.name %></h4>
+	<div class = "content">
+	<p>
+		<% form_tag '/events/update' do %>
+			<%= text_area 'event', 'report', "rows" => "3", "cols" => "60" %><br>
+			<% session[:event_id] = @event.id %>
+			<%= submit_tag 'submit' %> 
+		<% end %>
+	</p>
+	</div>
+</td>

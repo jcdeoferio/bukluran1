@@ -1,0 +1,102 @@
+<%= render :partial => '/organizations/menu' %>
+	
+<td class = "content_area">
+	<% session[:from_form] = 'form1' %>
+	<h2><hr>Information Sheet for Student Organization<hr></h2>
+	<div class = "content">
+	<% form_tag '/organizations/update' do %>
+	Official Name of Organization: <%= text_field 'data', 'name', "size" => "50"  %>
+	<br><br>
+	
+	Acronym or other names: <%= text_field 'data', 'acronym', "size" => "50"  %>
+	<br><br>
+	
+	Date Established:
+	<%= date_select('data', 'date_established', :order => [:month, :day, :year], :start_year => 1908)%>
+	<br><br>
+	
+	Nature of Organization:
+	<%= radio_button("data", "nature", "university-based") %> University-based
+	<%= radio_button("data", "nature", "College-based") %> College-based
+	<br><br>
+	
+	Category:
+	<%= select("data", "category", [["Academic"], ["Alliance"], ["Cause-Oriented"], ["Community Service"], ["Dormitory Association"], ["Fraternity"], ["Regional/Provincial"], ["Religious"], ["Sorority"], ["Special Interest"], ["Sports and Recreation"]]) %>
+	<br><br>
+	
+	Mailing Address (Please include zip code): <br>
+	<%= text_area 'data', 'mailing_address', "rows" => "2", "cols" =>"40" %>
+	<br><br>
+	
+	Permanent E-mail Address of the Organization: <%= text_field 'data', 'email_org', "size" => "25"  %> 
+	<br><br>
+	
+	E-mail Address of Head of the Organization: <%= text_field 'data', 'email_head', "size" => "25"  %>
+	<br><br>
+	
+	Is your organization incorporated with the Securities & Exchange Commission?
+	<br>
+	<%= radio_button("data", "sec_incorporated", true) %> Yes  <small>Specify date: <%= date_select('data', 'incorporation_date', :order => [:month, :day, :year], :start_year => 1908)%> </small>
+	<%= radio_button("data", "sec_incorporated", false) %> No
+	<br><br>
+	
+	<b>Faculty Adviser and Co-Adviser/s:</b>
+	<table border="1" rules="all">
+	<colgroup>
+		<col width="100">
+		<col width="210">
+		<col width="150">
+		<col width="150">
+		<col width="220">
+	</colgroup>
+	<tr>
+		<td></td>
+		<td><center><b>Name</b><br> <small>(Pls. indicate title Prof/Dr/Mr/Ms)</small></center></td>
+		<td><center><b>Department/College</b></center></td>
+		<td><center><small><b>Designated Faculty Position and Rank</b></small></center></td>
+		<td><center><b>Contact Info</b></center></td>
+	</tr>
+	<tr>
+		<td>Adviser</td>
+		<td><%= text_area 'data', 'adviser1', "rows" => "2", "cols" =>"25" %></td>
+		<td><textarea rows="4" cols="16"></textarea></td>
+		<td><textarea rows="4" cols="16"></textarea></td>
+		<td><font size="2">Mobile:</font><input size="24"><br>
+			<font size="2">Home:</font><input size="25"><br>
+			<font size="2">Office:</font><input size="25"><br>
+			<font size="2">E-mail:</font><input size="25"><br></td>
+	</tr><tr>
+		<td>Co-adviser</td>
+		<td><%= text_area 'data', 'adviser2', "rows" => "2", "cols" =>"25" %></textarea></td>
+		<td><textarea rows="4" cols="16"></textarea></td>
+		<td><textarea rows="4" cols="16"></textarea></td>
+		<td><font size="2">Mobile:</font><input size="24"><br>
+			<font size="2">Home:</font><input size="25"><br>
+			<font size="2">Office:</font><input size="25"><br>
+			<font size="2">E-mail:</font><input size="25"><br></td>
+	</tr><tr>
+		<td>Co-adviser</td>
+		<td><%= text_area 'data', 'adviser3', "rows" => "2", "cols" =>"25" %></textarea></td>
+		<td><textarea rows="4" cols="16"></textarea></td>
+		<td><textarea rows="4" cols="16"></textarea></td>
+		<td><font size="2">Mobile:</font><input size="24"><br>
+			<font size="2">Home:</font><input size="25"><br>
+			<font size="2">Office:</font><input size="25"><br>
+			<font size="2">E-mail:</font><input size="25"><br></td>
+	</tr>
+	</table>
+	<br>
+	
+	Brief Description:<br>
+	<%= text_area 'data', 'description', "rows" => "5", "cols" => "60" %><br>
+	<br><br>
+	<table>
+	<% if @data.status == -1 %>
+	<th class = "buttons_table"><%= submit_tag 'Save' %></th>
+	<% end %>
+	<% end %>
+ 	<th class = "buttons_table"><%= button_to 'Back', :action=> 'show' %></th>
+  	</table>
+	</div>
+	
+</td>

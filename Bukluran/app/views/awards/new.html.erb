@@ -1,0 +1,28 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Add New Award<hr></h2>
+	<div class = "content">
+	<% form_tag '/awards/create' do %>
+		Name of Award/Citation: 
+		<%= text_field 'award', 'name', "size" => "30" %> <br><br>
+		Type of Award/Citation:
+		<%= select("award", "classification", [["National"],["Local"],["University"], ["International"]]) %>
+		<br><br>
+		Brief Description of Award/Citation:<br>
+		<%= text_area 'award', 'description', "rows" => "3", "cols" => "60" %><br>
+		<br><br>
+
+		Award-Giving Body: <%= text_field 'award', 'from', "size" => "50" %>
+	
+		<br><br><br>
+		<table>
+		<th class = "buttons_table"><%= submit_tag 'Add' %> </th>
+	<% end %> 
+		<th class = "buttons_table"><%= button_to 'Cancel', :controller=> 'awards', :action => 'index' %></th>
+		</table>
+	</div>
+		
+
+	
+
+</td>
