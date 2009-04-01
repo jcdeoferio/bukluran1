@@ -1,0 +1,108 @@
+body {
+	background: url('/images/oblation.jpg') no-repeat fixed right;
+	background-color: white;
+	
+}
+
+.maintable {
+	width: 1024px;
+	height: 700px;
+}
+
+.buttons_table {
+    vertical-align: top;
+}
+.navigation_area {
+	width: 200px;
+	font-family: Arial;
+	font-size: 14px;
+	background-color:  #bbbbbb;	
+	vertical-align: top;
+	line-height: 23px;
+}
+
+.content_area {
+	background-color: #eeeeee;
+	font-family: Arial;
+	font-size: 14px;
+	text-align: justify;
+	letter-spacing: 1.4px;
+	vertical-align: top;
+}
+
+.logo_area {
+    height: 75px;
+	vertical-align: center;
+	padding-top: 20px ;
+	padding-bottom: 20px;
+	background: url('/images/head.JPG') no-repeat center;
+    background-color: #333333;
+    
+}
+
+.login_area {
+	width: 20%;
+	background-color: #bbbbbb;
+	font-family: Arial;
+	font-size: 13px;
+	text-align: justify;
+	letter-spacing: 1.4px;
+	vertical-align: top;
+}
+
+.footer_area {
+    height: 75px;
+	background-color: black;
+	font-family: Arial;
+	font-size: 11px;
+	color: gray;
+	letter-spacing: 3px;
+}
+
+p {
+	margin: 15px 15px 15px 25px;
+}
+
+.login {
+	position: center;
+	border-width: thick;
+	border-style: double;
+	border-color: black;
+	padding: 5px 5px 5px 5px;
+	margin: 0px 25px 0px 25px;
+	
+}
+.content {
+    margin: 5px 15px 5px 15px;
+
+    
+}
+
+.forms_form {
+    line-height: 23px;
+    font-size: 15;
+    
+}
+
+h2{
+    color: black;
+    background-color: white;
+}
+h3 {
+	background-color: white;
+	padding: 4px 4px 4px 4px;
+	letter-spacing: 1.4px;
+}
+h4 {
+    background-color: #bbbbbb;
+    padding: 3px 5px 3px 5px;
+    letter-spacing: 1.4;
+}
+
+.form_table {
+    text-align: center;
+    width: 750px;
+}
+.form_list{
+   
+}

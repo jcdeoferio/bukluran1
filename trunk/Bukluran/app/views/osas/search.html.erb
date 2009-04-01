@@ -1,0 +1,18 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Organization Listing<hr></h2>			
+	<div class = "content">
+	<ul>
+	
+	<li><%= link_to "Show list of all organizations", :controller => "osas", :action => "showall", :id => @organization %>
+	<br><br>
+	<li>Search organization<br>
+	<% form_tag '/osas/basic_search' do %>	
+		<%= text_field_tag 'name', nil, :size => 30 %>
+		<%= submit_tag 'search' %>
+	<% end %>
+	
+	</ul>
+	</div>
+
+</td>

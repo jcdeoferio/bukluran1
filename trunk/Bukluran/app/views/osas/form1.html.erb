@@ -1,0 +1,74 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Information Sheet for Student Organizations<hr></h2>
+	<div class = "content forms_form">
+	
+	<b>Official Name of Organization:</b> <%= @orgdata.name %> <br>
+	<b>Acronym or other names</b>: <%= @orgdata.acronym %> <br>
+	<b>Date Established:</b> <%= @orgdata.date_established %> <br>
+	<b>Category:</b> <%= @orgdata.category %> <br>
+	<b>Mailing Address:</b> <%= @orgdata.mailing_address %> <br>
+	<b>Permanent e-mail Address of the Organization:</b> <%= @orgdata.email_org %> <br>
+	<b>E-mail Address of the Head of the Organization:</b> <%= @orgdata.email_head %> <br>
+	<b>Is Incorporated with Security & Exchange Commission?</b> <%= (@orgdata.sec_incorporated)?("Yes, " + @orgdata.incorporation_date.to_s):"No" %> <br>
+
+	<br>	<br>
+	<b>Membership Distribution</b>
+	<table class = "form_table" border = 1>
+	<tr>
+		<th> </th> <th>Sophomores</th> <th>Juniors</th> <th>Seniors</th> <th>Post Grad Courses</th> <th>M.A./M.S.</th> <th>PhD</th> <th>Total</th>
+	</tr>
+	<tr>
+		<th>Male</th>
+		<td><%= @msop %></td> <td><%= @mjun %></td> <td><%= @msen %></td> <td><%= @mpgc %></td> <td><%= @mmas %></td> <td><%= @mphd %></td> <td><%= @mt %></td>
+	</tr>
+	<tr>
+		<th>Female</th>
+		<td><%= @fsop %></td> <td><%= @fjun %></td> <td><%= @fsen %></td> <td><%= @mpgc %></td> <td><%= @fmas %></td> <td><%= @fphd %></td> <td><%= @ft %></td>
+	</tr>
+	<tr>
+		<th>Total</th>
+		<td><%= @msop+@fsop %></td> <td><%= @mjun+@fjun %></td> <td><%= @msen+@fsen %></td> <td><%= @mpgc + @fpgc %></td> <td><%= @mmas + @fmas %></td> <td><%= @mphd + @fphd %></td> <td><%= @mt + @ft %></td>
+	</tr>
+	</table>
+	
+	<br><br>
+	<b>Faculty Advisers and Co-Adviser/s</b>
+	<table class = "form_table" border = 1>
+	<tr>
+		<th></th>
+		<th>Name</th>
+		<th>Department/<br>College</th>
+		<th>Designated Faculty <br> Position and Rank</th>
+		<th>Contact Info</th>
+	</tr>
+	<tr>
+		<th>Adviser</th>
+		<td><%= @orgdata.adviser1 %></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>Co-Adviser</th>
+		<td><%= @orgdata.adviser2 %></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>Co-Adviser</th>
+		<td><%= @orgdata.adviser3 %></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	</table>
+	
+	<br><br>
+  <b>Brief Description</b><br>
+	<p><%= @orgdata.description %></p>
+	<br>
+	<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @orgdata.id %>
+	</div>
+</td>

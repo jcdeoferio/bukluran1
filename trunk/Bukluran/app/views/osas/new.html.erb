@@ -1,0 +1,17 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>New Organization<hr></h2>
+	<div class = "content">
+	<% form_tag '/osas/create' do %>
+		<label>Organization Name:</label><br>
+		<%= text_field_tag 'name' %><br><br>
+
+		<label>Username:</label><br>
+		<%= text_field_tag 'username' %><br><br>
+
+		<label>Password:</label><br>
+		<%= password_field_tag 'password' %><br><br>
+		<%= submit_tag 'create' %>
+	<% end %>
+	</div>
+</td>

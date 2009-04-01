@@ -1,0 +1,9 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Pending Applications<hr></h2>
+	<ul>
+		<% for application in @pending %>
+			<li><%= link_to "#{application.name} (#{application.acronym})" , :controller => "osas", :action => "show_forms", :id => application.id %>
+		<% end %>
+	</ul>
+</td>

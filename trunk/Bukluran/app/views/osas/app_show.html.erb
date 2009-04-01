@@ -1,0 +1,70 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Pending Application<hr></h2>
+	<p>
+  <b>NAME:</b>
+  <%=h @orgdata.name %>
+</p>
+
+<p>
+  <b>ACRONYM:</b>
+  <%=h @orgdata.acronym %>
+</p>
+
+<p>
+  <b>DESCRIPTION:</b>
+  <%=h @orgdata.description %>
+</p>
+
+<p>
+	<b>COLLEGE:</b>
+	<%=h @orgdata.college%>
+<p>
+<p>
+  <b>CATEGORY:</b>
+  <%=h @orgdata.category %>
+</p>
+
+<p>
+  <b>NATURE:</b>
+  <%=h @orgdata.nature %>
+</p>
+
+<p>
+  <b>TAMBAYAN ADDRESS:</b>
+  <%=h @orgdata.tambayan_address %>
+</p>
+
+<p>
+  <b>MAILING ADDRESS:</b>
+  <%=h @orgdata.mailing_address %>
+</p>
+
+<p>
+  <b>HEAD'S E-MAIL ADDRESS:</b>
+  <%=h @orgdata.email_head %>
+</p>
+
+<table border ="2">
+	<tr>
+		<th>ADVISER(S)</th>
+	</tr>
+  <tr><td>
+		<%=h @orgdata.adviser1 %>
+    </td>
+	</tr>
+  <tr><td>
+		<%=h @orgdata.adviser2 %>
+    </td>
+	</tr>
+  <tr><td>
+		<%=h @orgdata.adviser3 %>
+    </td>
+	</tr>
+</table>
+
+<table>
+<th><%= button_to "Reject", {:action => "reject", :id => @orgdata.id} %></th>
+<th><%= button_to "Approve", {:action => "approve", :id => @orgdata.id} %></th>
+</table>
+		</td>

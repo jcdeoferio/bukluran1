@@ -1,0 +1,16 @@
+<td class ="content_area">
+<h1>Index</h1>
+<% if flash[:notice] %>
+	<%= flash[:notice]%><br/>
+	<% flash[:notice] = nil %>
+<% end %>
+<p>
+<% for account in @accounts %>
+	<%= account.username %> <%= link_to 'Show', :controller => 'accounts', :action => 'show', :id => account.id %>
+	
+	<br>
+<% end %>
+<%= link_to 'Add Account', :controller => 'accounts', :action => 'new' %>
+</p>
+</td>
+

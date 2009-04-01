@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  acronym: MyString
+  date_established: 2009-03-02
+  description: MyText
+  tambayan_address: MyString
+  nature: MyString
+  category: MyString
+  mailing_address: MyString
+  email_org: MyString
+  email_head: MyString
+  sec_incorporated: false
+  incorporation_date: 2009-03-02
+  adviser1: MyString
+  adviser2: MyString
+  adviser3: MyString
+  interview: false
+  status: 1
+  date_approved: 2009-03-02
+
+two:
+  name: MyString
+  acronym: MyString
+  date_established: 2009-03-02
+  description: MyText
+  tambayan_address: MyString
+  nature: MyString
+  category: MyString
+  mailing_address: MyString
+  email_org: MyString
+  email_head: MyString
+  sec_incorporated: false
+  incorporation_date: 2009-03-02
+  adviser1: MyString
+  adviser2: MyString
+  adviser3: MyString
+  interview: false
+  status: 1
+  date_approved: 2009-03-02

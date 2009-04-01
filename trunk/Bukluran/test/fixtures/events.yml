@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  organization_id: 1
+  name: MyString
+  category: MyString
+  description: MyText
+  date: 2009-03-02
+  venue: MyString
+  event_head: MyString
+  report: MyText
+
+two:
+  organization_id: 1
+  name: MyString
+  category: MyString
+  description: MyText
+  date: 2009-03-02
+  venue: MyString
+  event_head: MyString
+  report: MyText

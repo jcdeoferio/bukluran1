@@ -1,0 +1,15 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Activities for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %>: <%= @orgdata.name %><hr></h2>
+	<% for event in @orgdata.events %>
+		<h4><%=h event.name %> - <%= event.date %></h4>
+		<p>
+			Category: <%=h event.category %> <br>
+			Venue: <%=h event.venue %> <br>
+			Description: <%=h event.description %> <br>
+			Person-In-Charge: <%=h event.event_head %> <br><br>
+			Report: <%=h event.report %> <br>
+		</p>
+	<% end %>
+	<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @orgdata.id %>
+</td>

@@ -1,0 +1,28 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Activities for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %><hr></h2>
+	<%= link_to 'Add Event', :action => 'new' %>
+
+	<% for c in ["Academic Activities", "Advocacy and Extension Service", "UP Community Service", "Organization - Capacity Building Activities"]%>
+		<% if @events.find_by_category(c) %>
+			<h3><%= c %></h3>
+			<div class = "content">
+			<% for event in @events.all(:conditions => "category = '#{c}'") %>
+				<h4><%=h event.name %> 
+				<% if event.date.year <= Time.now.year && event.date.month <= Time.now.month && event.date.day <= Time.now.day && event.report == nil %>
+					- <%= link_to 'Submit Report', :action => 'report', :id => event.id %> 
+				<% elsif event.report != nil %>
+					- <%= link_to 'View Report', :action => 'show', :id => event.id %>
+				<% end %></h4>
+				<p>
+					Date: <%=h event.date %><br>
+					Venue: <%=h event.venue %> <br>
+					Description: <%=h event.description %> <br>
+					Person in-Charge: <%= event.event_head %> <br>
+				</p>
+			<% end %>
+			</div>
+		<% end %>
+		<br><br>
+	<% end %>
+</td>

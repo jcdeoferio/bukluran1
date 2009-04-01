@@ -1,0 +1,19 @@
+<td class ="content_area">
+<h1>Create New Account</h1>
+  <% form_tag '/accounts/create' do %>
+  	<%# error_messages %>
+  	
+  	UserName: <br/>
+  	<%= text_field 'account', 'username' %> <br/>
+  	
+  	Password: <br/>
+  	<%= text_field 'account', 'password' %> <br/>
+  	
+  	Group: <br/>
+  	<%= select('account', 'group', [['OSA'],['ADMINISTRATOR'],['ORGANIZATION']]) %><br/>
+  	
+  	<br/>
+  	<%= submit_tag "Create" %>
+  <% end %>
+
+</td>

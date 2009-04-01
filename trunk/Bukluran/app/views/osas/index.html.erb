@@ -1,0 +1,22 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Announcements - <%= link_to 'Add', :controller => 'announcements', :action => 'new' %><hr></h2>
+	<table>
+		<th><%= button_to 'Start Application Period', :contorller => 'osas', :action => 'start_app'%></th>
+		<th><%= button_to 'End Application Period', :contorller => 'osas', :action => 'end_app'%></th>
+	</table>
+	<% unless @pending.empty? %>
+      <h4><%= 'There are pending applications waiting for approval' %></h4>
+    <% end %>
+	<ul>
+		<% for announcement in @announcements %>
+			<li> <%= announcement.message %>
+		<% end %>
+	</ul>
+</td>
+
+
+
+
+
+
