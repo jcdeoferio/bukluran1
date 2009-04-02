@@ -4,9 +4,10 @@
 		<div class = "content">
 		<strong><font color = 'red'>ALL SCANNED DOCUMENTS MUST HAVE THEIR HARDCOPY SUBMITTED TO OSA OFFICE</font></strong><br><br>
 		Select a form to fill up. <br>
+		<strong><font color = 'green'><%= flash[:notice] %></font></strong>
 		<ul class = 'form_list'>
 			<li><%= link_to 'Form 1 - Information Sheet', :action => 'form1' %><br><br>
-			<li>Form 2 - Faculty Adviser, Head and Finance Statement
+			<li><%= link_to 'Form 2 - Faculty Adviser, Head and Finance Statement', :action => 'form2' %><br>
 			<ul>
 				<li>Upload scanned copy here (upload button)
 			</ul><br>
@@ -20,7 +21,7 @@
 			<ul>
 				<li><%= link_to 'Add Event', :controller => 'events', :action => 'new' %>
 			</ul><br>
-			<li>Form 7 - Acknowledgement 
+			<li><%= link_to 'Form 7 - Acknowledgement', :action => 'form7' %>
 			<ul>
 				<li>Upload scanned copy here (upload button)
 			</ul><br>

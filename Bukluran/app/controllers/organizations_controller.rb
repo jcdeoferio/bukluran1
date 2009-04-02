@@ -1,3 +1,5 @@
+require 'find'
+
 class OrganizationsController < ApplicationController
   def index
     @data = Organization.find_by_account_id(session[:user_id])
@@ -36,8 +38,62 @@ class OrganizationsController < ApplicationController
     @data = Organization.find_by_account_id(session[:user_id])
   end
   
+  def form2Upload
+	@data = Organization.find_by_account_id(session[:user_id])
+	@upload = params[:upload]
+	@name = @upload['datafile'].original_filename.to_s
+	if @name.length < 5
+		flash[:notice] = "File not supported, upload only (jpg gif png bmp) file format #{@size}"
+		redirect_to :controller => 'organizations', :action => 'form2'
+	else
+		@name = @name.slice(@name.length-4,@name.length)
+		if @name == ".png" || @name == ".jpg" || @name == ".gif" || @name == ".bmp"
+			@yearsem = Time.now.year.to_s
+			if Time.now.month >5 && Time.now.month <11
+				@yearsem = @yearsem + "_1stSem"
+			else
+				@yearsem = @yearsem + "_2ndSem"
+			end
+			@directory_path = "public/data/"+@data.name+"/"+@yearsem+"/"+"Form_2"
+			post = DataFile.save(params[:upload], @directory_path)
+			flash[:notice] = "Form 2 File Has Been Uploaded Successfully"
+			redirect_to :controller => 'organizations', :action => 'show'
+		else
+			flash[:notice] = "File not supported, upload only (jpg gif png bmp) file format"
+			redirect_to :controller => 'organizations', :action => 'form2'
+		end
+	end
+  end
+  
   def form7
     @data = Organization.find_by_account_id(session[:user_id])
+  end
+  
+  def form7Upload
+	@data = Organization.find_by_account_id(session[:user_id])
+	@upload = params[:upload]
+	@name = @upload['datafile'].original_filename.to_s
+	if @name.length < 5
+		flash[:notice] = "File not supported, upload only (jpg gif png bmp) file format"
+		redirect_to :controller => 'organizations', :action => 'form7'
+	else
+		@name = @name.slice(@name.length-4,@name.length)
+		if @name == ".png" || @name == ".jpg" || @name == ".gif" || @name == ".bmp"
+			@yearsem = Time.now.year.to_s
+			if Time.now.month >5 && Time.now.month <11
+				@yearsem = @yearsem + "_1stSem"
+			else
+				@yearsem = @yearsem + "_2ndSem"
+			end
+			@directory_path = "public/data/"+@data.name+"/"+@yearsem+"/"+"Form_7"
+			post = DataFile.save(params[:upload], @directory_path)
+			flash[:notice] = "Form 7 File Has Been Uploaded Successfully"
+			redirect_to :controller => 'organizations', :action => 'show'
+		else
+			flash[:notice] = "File not supported, upload only (jpg gif png bmp) file format"
+			redirect_to :controller => 'organizations', :action => 'form7'
+		end
+	end
   end
   
   def submit
@@ -47,4 +103,5 @@ class OrganizationsController < ApplicationController
       redirect_to :action => 'index'
     end
   end
+   
 end

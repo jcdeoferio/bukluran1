@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090330141600) do
+ActiveRecord::Schema.define(:version => 20090401060019) do
 
   create_table "accounts", :force => true do |t|
     t.string   "username"
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(:version => 20090330141600) do
     t.string   "classification"
     t.text     "description"
     t.string   "from"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "data_files", :force => true do |t|
+    t.string   "directory_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

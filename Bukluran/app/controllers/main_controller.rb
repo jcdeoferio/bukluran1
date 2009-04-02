@@ -4,8 +4,7 @@ class MainController < ApplicationController
    @current_user = Account.find_by_username_and_password( params[:login], params[:password]) 
    @announcements = Announcement.find(:all)
     if @current_user
-      session[:user_id] = @current_user.id
-      
+      session[:user_id] = @current_user.id 
       case @current_user.group
         when 'ORGANIZATION'
           redirect_to :controller => 'organizations', :action => 'index'

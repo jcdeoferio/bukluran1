@@ -1,0 +1,14 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr><%= "#{@data.name} Form 7" %><hr></h2>
+		<strong><font color = 'red'><%= flash[:notice] %></font></strong>
+		<ul>
+			<% for filename in @files %>
+				 <% pathname = "Form_7/#{filename}"%>
+				 <%= image_tag("/data/#{@data.name}/#{@yearsem}/Form_7/#{filename}", :size => "100x100")  %><br>
+				 <li><%= link_to "View #{filename} in Bigger Size", :action => 'view_form', :id => @data.id, :pname => pathname, :ysem => @yearsem %><br>
+			<% end %>
+			<br><br>
+			<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @data.id %>
+		<ul>
+</td>
