@@ -1,0 +1,10 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+<h1>Form 7 File Upload</h1>
+<h4> Please be reminded that filesize should not exceed 15 MB and File Format should be either (jpg gif png bmp) only</h4>
+<strong><font color = 'red'><%= flash[:notice] %></font></strong>
+<% form_tag ('/organizations/form7Upload',:multipart => true) do %>
+	<p><label for="upload_file">Select File</label> : 
+	<%= file_field 'upload','datafile' %></p>
+	<%= submit_tag 'Upload' %>
+<% end%>
