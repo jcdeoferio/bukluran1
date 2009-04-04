@@ -88,5 +88,7 @@ class PdfDrawer
 		end
 	end
     pdf.render
+    
+    
   end
 end
