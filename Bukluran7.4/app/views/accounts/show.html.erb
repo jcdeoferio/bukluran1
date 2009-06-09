@@ -1,0 +1,10 @@
+<td class ="content_area">
+<h1>Account View</h1>
+<p>
+	Username: <%=h @account.username %><br/>
+	Password: <%=h @account.password %><br/>
+	Group: <%= @account.group %><br/>
+	<br/>
+	<%= link_to 'Back', :controller => 'accounts', :action => 'index' %>
+</p>
+</td>

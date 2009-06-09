@@ -1,0 +1,4 @@
+
+200712345, jtamad@up.edu.ph, President
+200809876, ppogi@up.edu.ph, Member
+200910293, tbato@up.edu.ph, Secretary

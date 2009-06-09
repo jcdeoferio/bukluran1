@@ -1,0 +1,10 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<% form_for :organization, :url => { :action => 'create' } do |f| %>
+	  <% @current_user.members.each_with_index do |member, index| %>
+	    <%= render :partial => 'member_fields', :locals => { :member => member, :index => index } %>
+	  <% end %>
+	  <%= render :partial => 'add_member_link', :locals => { :index => @current_user.members.size } %>
+	  <p><%= submit_tag 'Add Members' %></p>
+	<% end %>
+</td>

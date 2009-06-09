@@ -1,0 +1,4 @@
+page.insert_html :bottom, :tasks, :partial => 'member_fields',
+                 :locals => { :member => @member, :index => params[:index] }
+ 
+page.replace :add_member_link, :partial => 'add_member_link', :locals => { :index => (params[:index].to_i + 1) }

@@ -1,0 +1,11 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+			<h2><hr>List of All Organizations<hr></h2>
+			
+			<h4>There <%= @organizations.size>1?"are":"is" %> <%= @organizations.size %> student organization<%= @organizations.size>1?"s":"" %></h4>
+			<ul>
+				<% for organization in @organizations %>
+					<li><%= link_to "#{organization.name} (#{organization.acronym})" , :controller => "osas", :action => "show_forms", :id => organization.id %>
+				<% end %>
+			</ul>
+		</td>

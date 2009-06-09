@@ -1,0 +1,68 @@
+<td>
+<h1>Student Profile</h1>
+Please fill up all nessesary information<br/>
+  <% form_tag '/students/update/1' do %>
+  	<%= error_messages_for 'student' %>
+  	<%= @student.id %>
+  	Student Number:<br/>
+  	<%= @student.student_no %><br/>
+  	
+  	Full Name: <br/>
+  	<%= text_field 'student', 'name' %> <br/>
+  	
+  	Nickname: <br/>
+  	<%= text_field 'student', 'nickname' %> <br/>
+  	
+  	Title: <br/>
+  	<%= text_field 'student', 'title' %> <br/>
+  	
+  	Gender: <br/>
+  	<%= select('student', 'gender', [['Male','m'],['Female','f']]) %><br/>
+  	
+  	College: <br/>
+  	<%= text_field 'student', 'college' %> <br/>
+  	
+  	Degree Program: <br/>
+  	<%= select('student', 'degree_program', [['BS','BS'],['BA','BA'],['MS','MS'],['MA','MA'],['MS','MS'],['PhD','PHD'],['Post Grad Course','PGA']]) %><br/>
+  	
+  	Course: <br/>
+  	<%= text_field 'student', 'course' %> <br/>
+  	
+  	Contact No: <br/>
+  	<%= text_field 'student', 'contact_no' %> <br/>
+  	
+  	Permanent Address: <br/>
+  	<%= text_area 'student', 'permanent_address' %> <br/>
+  	
+  	Present Address: <br/>
+  	<%= text_area 'student', 'present_address' %> <br/>
+    
+    Guardian: <br/>
+  	<%= text_field 'student', 'guardian' %> <br/>
+    
+    Guardian's Address: <br/>
+  	<%= text_area 'student', 'guardian_address' %> <br/>
+  	
+    Guardian's Tel No: <br/>
+  	<%= text_field 'student', 'guardian_telno' %> <br/>
+  	
+  	<br/>
+  	<%= submit_tag "Save" %>
+  <% end %>
+
+ <h1>Memberships to be Confirmed</h1>
+<% for member in @members %>
+	<% if member.confirm != true %>
+	Organization: <%= member.organization.name %>	Position: <%= member.position %><br/>
+	<%= button_to 'Confirm', :action=> 'confirm', :id => member.id %>
+	<br/>
+	<% end %>
+<% end %>
+
+<h1>Confirmed Memberships</h1>
+<% for member in @members %>
+	<% if member.confirm == true %>
+	Organization:<%= member.organization.name %>	Position:<%= member.position %>
+	<% end %>
+<% end %>
+</td>

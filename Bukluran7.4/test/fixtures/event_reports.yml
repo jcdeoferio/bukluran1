@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  organization_id: 1
+  name: MyString
+  category: MyString
+  description: MyString
+  date: 2009-04-02
+  venue: MyString
+  head: MyString
+  file_path1: MyString
+  file_path2: MyString
+  file_path3: MyString
+
+two:
+  organization_id: 1
+  name: MyString
+  category: MyString
+  description: MyString
+  date: 2009-04-02
+  venue: MyString
+  head: MyString
+  file_path1: MyString
+  file_path2: MyString
+  file_path3: MyString

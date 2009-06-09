@@ -1,0 +1,33 @@
+x<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Upload Member List for A.Y. <%="#{@schoolyear} #{@sem}" %><hr></h2>
+	<%= error_messages_for 'member' %>
+	<div id='error'><%= flash[:error] %></div>
+	<div id='notification'><%= flash[:notice] %></div>
+	<strong><font color = 'red'> Note: The system will only accept text file (txt) that do not exceed 1 MB.</font></strong><br><br>
+	<% if  @editable %>
+		<% form_tag ('/members/upload_members',:multipart => true) do %>
+			<label for="upload_file">Select File</label> : 
+			<%= file_field 'upload','datafile' %>	<%= submit_tag 'Upload Members/Officers List' %>
+		<% end %>
+	<% end %>
+	<br>
+	<div class = "content">
+	<strong><font color = 'red'>Please follow the text file content format accordingly</font></strong><br>
+	<ul>
+		<li> Create a text file that contains the list of all members (including officers)</li>
+		<li> Follow the format <i>student no, up webmail, position</i> (separated by commas)</li>
+		<li> Do not use shortcut for batch year and "-" (eg. "06-XXXXX") for student no</li>
+		<li> Do not use other email account aside UP Webmail</li>
+		<li> Indicate the position in the organization of each member. (Write "Member" if not an officer)</li>
+		<li> One member per line <br><br></li>
+	</ul><div class="content">
+			Examples:<br><br>
+			200712345, jtamad@up.edu.ph, President<br>
+			200809876, ppogi@up.edu.ph, Member<br>
+			200910293,tbato@up.edu.ph, Secretary<br><br>
+			</div>
+	</div>
+	<br>
+	<%= button_to 'Back', :controller => 'organizations', :action => 'show_forms' %>
+</td>

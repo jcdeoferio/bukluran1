@@ -1,0 +1,7 @@
+<% fields_for "members[#{index}]", member do |f| %>
+  <p>
+    Student no. : <%= f.text_field :student_id %> 
+    Position : <%= f.text_field :position %> 
+    <%= link_to_remote 'remove', :url => { :action => 'remove_member', :index => index } %>
+  </p>
+<% end %>
