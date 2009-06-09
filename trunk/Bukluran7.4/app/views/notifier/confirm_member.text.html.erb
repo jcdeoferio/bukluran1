@@ -6,7 +6,7 @@
 	
 	We would like to know if you are truly a member of <%= @org.name %>.
 	Please click the link if you are.<br>
-	<%= link_to 'Send Confirmation', "http://122.2.243.71:3000/notifier/confirm/#{@member.id}" %>
+	<%= link_to 'Send Confirmation', "http://122.2.243.71:3000/notifier/confirm/#{@member.confirmation_key}" %>
 	
 </body>
 </html> 
