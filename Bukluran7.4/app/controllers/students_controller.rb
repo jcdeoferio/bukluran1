@@ -11,8 +11,13 @@ class StudentsController < ApplicationController
   end
 
   def profile
-    @student = Student.find_by_id(params[:id])
-    @members = @student.members
+    @student = Member.find_by_confirmation_key(params[:id]).student
+    if @student
+      @members = @student.members
+    else
+      flash[:error] = "INVALID REQUEST"
+      redirect_to "/"
+    end
   end
 
   def update

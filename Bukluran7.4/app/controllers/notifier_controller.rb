@@ -19,13 +19,15 @@ class NotifierController < ApplicationController
 	def get_confirmation
 	   @org = Organization.find_by_id(params[:id])
 	   for @member in @org.members
+	     @member.confirmation_key = (@org.name.crypt "#{@member.id} afeGRReD83erEweytu8968YuO776POLdN343m4534DsAz3 #{Time.now}").downcase!
+	     @member.save
 	     Notifier.deliver_confirm_member(@member, @org)
 	   end
 	   redirect_to "/osas/show_forms/#{@org.id}"
 	end
 	
 	def confirm
-	 @member = Member.find_by_id(params[:id])
+	 @member = Member.find_by_confirmation_key(params[:id])
 	 @member.confirm = true
 	 @member.save
 	end
