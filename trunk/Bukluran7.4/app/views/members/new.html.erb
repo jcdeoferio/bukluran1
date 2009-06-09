@@ -1,0 +1,19 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Add Officer for A.Y. <%="#{@schoolyear} #{@sem}" %><hr></h2>
+	<%= error_messages_for 'member' %>
+	<div id='error'><%= flash[:error] %></div>
+	<div id='notification'><%= flash[:notice] %></div>
+	<% if  @editable %>
+
+			<% @members.each_with_index do |member, index| %>
+				<% fields_for "members[#{index}]", member do |f| %>
+					Student no: <%= f.text_field :student_id %> 
+					Position: <%= f.text_field :position %><br><br>
+				<% end %>
+			<% end %>
+
+	<% end %>
+	<br>
+	<%= button_to 'Back', :controller => 'organizations', :action => 'show_forms' %>
+</td> 

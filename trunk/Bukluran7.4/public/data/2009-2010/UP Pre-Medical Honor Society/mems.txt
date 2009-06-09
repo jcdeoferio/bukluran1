@@ -1,0 +1,10 @@
+20068238, ndre@up.edu.ph, president
+200628381, adsa@up.edu.ph, mem
+200512121, atlu@up.edu.ph, acad
+200623812, nmpal@up.edu.ph, scc
+200738125, rasy@up.edu.ph, sec
+2007461212, mlcast@up.edu.ph, fin
+200643723, bsalc@up.edu.ph, pub
+
+
+

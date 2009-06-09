@@ -1,0 +1,30 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<% if @isopen %>
+		<%= button_to 'End Application Period', {:contorller => 'osas', :action => 'end_app'}, :confirm => "Are you sure you want to end the application period?"%>		
+	<% else %>
+		<%= button_to 'Start Application Period', {:contorller => 'osas', :action => 'start_app'}, :confirm => "Are you sure you want to start the application period?"%>
+	<% end %>
+	<h2><hr>Announcements<hr></h2>
+	<%= flash[:notice] %>
+	<% unless @pending.empty? %>
+      <h4><%= 'There are pending applications waiting for approval' %></h4>
+    <% end %>
+    <div class = "content">
+	<%= link_to 'Add Anouncement', :controller => 'announcements', :action => 'new' %>
+	
+	<ul>
+		<% for announcement in @announcements %>
+			<li> <%= announcement.message %> 
+			<font size=1><%= link_to 'delete', {:controller => 'announcements', :action => 'destroy', :id => announcement.id}, :confirm => "Are you sure you want to delete this announcement?"%></font>
+			<br><br></li>
+		<% end %>
+	</ul>
+	</div>
+</td>
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<%= render :partial => '/organizations/menu' %>
+
+<td class = "content_area">
+	<h2><hr>Awards & Citations<hr></h2>
+	<div id = "error"><%=h flash[:error] %></div>
+	<div id = "notification"><%=h flash[:notice] %></div>
+	<%= error_messages_for 'award' %>
+	<table>
+	<% if  @editable %>
+	<th><%= button_to 'Add Award', :action => 'new' %></th>
+	<th><%= button_to 'Upload Certificate', :action => 'upload_certificate' %></th>
+	<% end %>
+	<th><%= button_to 'Back to Forms', :controller => 'organizations', :action => 'show_forms' %></th>
+	</table>
+	
+	<div class = "content">
+		<% unless @awards.empty? %>
+			<table class = "form_table" border = 1>
+				<tr>
+					<th width = "25%">Award/Citation</th>
+					<th width = "10%">Classification</th>
+					<th width = "40%">Description</th>
+					<th width = "25%">Award-Giving Body</th>
+				</tr>
+			<% for award in @awards.all(:order => "name ASC") %>
+				<tr>
+					<td><%=h award.name %><br>
+					<% if  @editable %>
+					<font size=1><%= link_to 'delete', {:controller => 'awards', :action => 'destroy', :id => award.id}, :confirm => "Are you sure you want to delete this award/citation?"  %></font></td>
+					<% end %>
+					<td><%=h award.classification %></td>
+					<td><%=h award.description %></td>
+					<td><%=h award.award_giving_body %></td>
+				</tr>
+			<% end %>
+			</table>
+		<% end %>
+	</div>
+
+</td>
