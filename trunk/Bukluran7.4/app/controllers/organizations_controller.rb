@@ -14,7 +14,7 @@ class OrganizationsController < ApplicationController
   
   def create
     @current_user  = Organization.find_by_account_id(session[:user_id])
-    params[:members].each_value { |member| @current_user.members.build(member)}
+    params[:members].each_value { |member| @current_user.members.build(member) }
     if @current_user.save
       redirect_to :action => 'show_forms'
     else

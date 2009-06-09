@@ -1,12 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>  
+<html>
 <head>  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  </head>  
 <body>
-	Greetings from OSA,
+	Greetings from OSA,<br>
+	<br>
 	
-	We would like to know if you are truly a member of <%= @org.name %>.
-	Please click the link if you are.<br>
-	<%= link_to 'Send Confirmation', "http://122.2.243.71:3000/notifier/confirm/#{@member.confirmation_key}" %>
+	We would like to know if you are truly a member of <%= @org.name %>.<br>
+	Please click the link to the confirmation page and fill in the nessesary details if you are indeed a member.<br>
+	<%= link_to 'Membership Confirmation', "http://localhost:3006/students/profile/#{@member.confirmation_key}" %>
 	
 </body>
 </html> 
