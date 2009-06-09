@@ -7,12 +7,19 @@ class Notifier < ActionMailer::Base
     body :password => password, :username => username 
   end 
   
-  def confirm_member(member, org)
-    recipients member.student.webmail
+  def confirm_member(student, org)
+    recipients student.webmail
     from "Office of Student Activities <up.bukluran@gmail.com>"  
     subject 'MEMBERSHIP CONFIRMATION'
     sent_on Time.now 
-    body :org => org, :member => member
+    body :org => org, :student => student
   end
   
+  def announcement_mail(announcement, orgmails)
+    recipients orgmails
+    from "Office of Student Activities <up.bukluran@gmail.com>"  
+    subject 'ANNOUNCEMENT'
+    sent_on Time.now 
+    body :announcement => announcement
+  end
 end
