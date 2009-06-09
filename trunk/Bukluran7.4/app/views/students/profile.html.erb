@@ -1,5 +1,8 @@
 <td>
-
+<div class = "content">
+		<%= error_messages_for 'member' %>
+		<div id="notification"><%= flash[:notice] %></div>
+		<div id="error"><%= flash[:error] %></div>
 <h1>Memberships to be Confirmed</h1>
 <% for member in @members %>
 	<% if member.confirm != true %>
