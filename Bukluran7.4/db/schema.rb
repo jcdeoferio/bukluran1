@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20090402065519) do
     t.integer  "semester"
     t.integer  "year"
     t.boolean  "confirm"
+    t.string   "confirmation_key"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -114,7 +115,7 @@ ActiveRecord::Schema.define(:version => 20090402065519) do
     t.string   "adviser3_home"
     t.string   "adviser3_office"
     t.string   "adviser3_email"
-    t.boolean  "editable",           :default => false
+    t.boolean  "editable"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

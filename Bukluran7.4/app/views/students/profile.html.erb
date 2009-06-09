@@ -1,4 +1,14 @@
 <td>
+
+<h1>Memberships to be Confirmed</h1>
+<% for member in @members %>
+	<% if member.confirm != true %>
+	Organization: <%= member.organization.name %>	Position: <%= member.position %><br/>
+	<%= button_to 'Confirm', :action=> 'confirm', :id => @key %>
+	<br/>
+	<% end %>
+<% end %>
+
 <h1>Student Profile</h1>
 Please fill up all nessesary information<br/>
   <% form_tag '/students/update/1' do %>
@@ -49,15 +59,6 @@ Please fill up all nessesary information<br/>
   	<br/>
   	<%= submit_tag "Save" %>
   <% end %>
-
- <h1>Memberships to be Confirmed</h1>
-<% for member in @members %>
-	<% if member.confirm != true %>
-	Organization: <%= member.organization.name %>	Position: <%= member.position %><br/>
-	<%= button_to 'Confirm', :action=> 'confirm', :id => member.id %>
-	<br/>
-	<% end %>
-<% end %>
 
 <h1>Confirmed Memberships</h1>
 <% for member in @members %>

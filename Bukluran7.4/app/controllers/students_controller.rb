@@ -3,17 +3,29 @@ class StudentsController < ApplicationController
   end
 
   def confirm
-    @member = Member.find_by_id(params[:id])
-	@member.confirm = true
-	@member.save
-	flash[:notice] = "Confirmation Successful"
-	redirect_to "profile/#{student.id}"
+    @member = Member.find_by_confirmation_key(params[:id])
+    if @member
+	 @member.confirm = true
+	 @member.save
+	 flash[:notice] = "Confirmation Successful"
+	 redirect_to "/students/profile/#{params[:id]}"
+	else
+	 flash[:error] = "INVALID REQUEST"
+     redirect_to "/"
+	end
   end
 
   def profile
-    @student = Member.find_by_confirmation_key(params[:id]).student
-    if @student
-      @members = @student.members
+    @member = Member.find_by_confirmation_key(params[:id])
+    @key = params[:id]
+    if @member
+      @student = @member.student
+      if @student
+        params[:id] = @student.id
+        @members = @student.members
+      else
+       
+      end
     else
       flash[:error] = "INVALID REQUEST"
       redirect_to "/"
