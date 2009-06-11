@@ -14,53 +14,53 @@
 
 <h1>Student Profile</h1>
 Please fill up all nessesary information<br/>
-  <% form_tag '/students/update/1' do %>
-  	<%= error_messages_for 'student' %>
-  	<%= @student.id %>
+  <% form_for(@student) do |f| %>
+  	<%= f.error_messages %>
+  	<%= @student.id %><br/>
   	Student Number:<br/>
   	<%= @student.student_no %><br/>
   	
   	Full Name: <br/>
-  	<%= text_field 'student', 'name' %> <br/>
+  	<%= f.text_field :name %> <br/>
   	
   	Nickname: <br/>
-  	<%= text_field 'student', 'nickname' %> <br/>
+  	<%= f.text_field :nickname %> <br/>
   	
   	Title: <br/>
-  	<%= text_field 'student', 'title' %> <br/>
+  	<%= f.text_field :title %> <br/>
   	
   	Gender: <br/>
-  	<%= select('student', 'gender', [['Male','m'],['Female','f']]) %><br/>
+  	<%= f.select(:gender, [['Male','m'],['Female','f']]) %><br/>
   	
   	College: <br/>
-  	<%= text_field 'student', 'college' %> <br/>
+  	<%= f.text_field :college %> <br/>
   	
   	Degree Program: <br/>
-  	<%= select('student', 'degree_program', [['BS','BS'],['BA','BA'],['MS','MS'],['MA','MA'],['MS','MS'],['PhD','PHD'],['Post Grad Course','PGA']]) %><br/>
+  	<%= f.select(:degree_program, [['BS','BS'],['BA','BA'],['MS','MS'],['MA','MA'],['MS','MS'],['PhD','PHD'],['Post Grad Course','PGA']]) %><br/>
   	
   	Course: <br/>
-  	<%= text_field 'student', 'course' %> <br/>
+  	<%= f.text_field :course %> <br/>
   	
   	Contact No: <br/>
-  	<%= text_field 'student', 'contact_no' %> <br/>
+  	<%= f.text_field :contact_no %> <br/>
   	
   	Permanent Address: <br/>
-  	<%= text_area 'student', 'permanent_address' %> <br/>
+  	<%= f.text_area :permanent_address %> <br/>
   	
   	Present Address: <br/>
-  	<%= text_area 'student', 'present_address' %> <br/>
+  	<%= f.text_area :present_address %> <br/>
     
     Guardian: <br/>
-  	<%= text_field 'student', 'guardian' %> <br/>
+  	<%= f.text_field :guardian %> <br/>
     
     Guardian's Address: <br/>
-  	<%= text_area 'student', 'guardian_address' %> <br/>
+  	<%= f.text_area :guardian_address %> <br/>
   	
     Guardian's Tel No: <br/>
-  	<%= text_field 'student', 'guardian_telno' %> <br/>
+  	<%= f.text_field :guardian_telno %> <br/>
   	
   	<br/>
-  	<%= submit_tag "Save" %>
+  	<%= f.submit "Save" %>
   <% end %>
 
 <h1>Confirmed Memberships</h1>
