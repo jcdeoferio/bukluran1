@@ -21,7 +21,6 @@ class StudentsController < ApplicationController
     if @member
       @student = @member.student
       if @student
-        params[:id] = @student.id
         @members = @student.members
       else
        
@@ -33,10 +32,10 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find_by_id(params[:id])
+    @student = Member.find_by_confirmation_key(params[:id]).student
     if @student.update_attributes(params[:student])
       flash[:notice] = "Profile has been updated!"
-      redirect_to :controller => "students", :action => "profile", :id => @student.id
+      redirect_to :controller => "students", :action => "profile", :id => params[:id]
     else
       flash[:error] = "INVALID REQUEST"
       redirect_to "/"
