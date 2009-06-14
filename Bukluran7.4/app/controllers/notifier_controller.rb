@@ -19,7 +19,7 @@ class NotifierController < ApplicationController
 	def get_confirmation
 	   @org = Organization.find_by_id(params[:id])
 	   for @member in @org.members
-	     @member.confirmation_key = (@org.name.crypt "#{@member.id} afeGRReD83erEweytu8968YuO776POLdN343m4534DsAz3 #{Time.now}").downcase!
+	     @member.confirmation_key = conkey
 	     @member.save
 	     Notifier.deliver_confirm_member(@member, @org)
 	   end
@@ -30,6 +30,12 @@ class NotifierController < ApplicationController
 	 @member = Member.find_by_confirmation_key(params[:id])
 	 @member.confirm = true
 	 @member.save
+	end
+	
+	def conkey
+	 @key = @org.name.crypt "#{@member.id}pLeNMirfmconFrimmd123nf3fh321dfrgFMJSD#{Time.now.sec}"
+	 @key.gsub("/", "!")
+	 return @key
 	end
 	
 end
