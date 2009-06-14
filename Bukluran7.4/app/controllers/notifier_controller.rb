@@ -23,6 +23,7 @@ class NotifierController < ApplicationController
 	     @member.save
 	     Notifier.deliver_confirm_member(@member, @org)
 	   end
+	   flash[:notice] = "EMAIL CONFIRMATIONS HAVE BEEN SENT"
 	   redirect_to "/osas/show_forms/#{@org.id}"
 	end
 	
