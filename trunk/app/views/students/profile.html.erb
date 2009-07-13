@@ -1,0 +1,72 @@
+<td>
+<div class = "content">
+		<%= error_messages_for 'member' %>
+		<div id="notification"><%= flash[:notice] %></div>
+		<div id="error"><%= flash[:error] %></div>
+<h1>Membership Confirmation</h1>
+<% for member in @members %>
+	<% if member.confirm != true %>
+	Organization: <%= member.organization.name %>	Position: <%= member.position %><br/>
+	<%= button_to 'Confirm', :action=> 'confirm', :id => @key %>
+	<br/>
+	<% end %>
+<% end %>
+
+<h1>Student Profile</h1>
+Please fill up all nessesary information<br/>
+  <% form_for(@student) do |f| %>
+  	<%= f.error_messages %>
+  	<%= @student.id %><br/>
+  	Student Number:<br/>
+  	<%= @student.student_no %><br/>
+  	
+  	Full Name: <br/>
+  	<%= f.text_field :name %> <br/>
+  	
+  	Nickname: <br/>
+  	<%= f.text_field :nickname %> <br/>
+  	
+  	Title: <br/>
+  	<%= f.text_field :title %> <br/>
+  	
+  	Gender: <br/>
+  	<%= f.select(:gender, [['Male','m'],['Female','f']]) %><br/>
+  	
+  	College: <br/>
+  	<%= f.text_field :college %> <br/>
+  	
+  	Degree Program: <br/>
+  	<%= f.select(:degree_program, [['BS','BS'],['BA','BA'],['MS','MS'],['MA','MA'],['MS','MS'],['PhD','PHD'],['Post Grad Course','PGA']]) %><br/>
+  	
+  	Course: <br/>
+  	<%= f.text_field :course %> <br/>
+  	
+  	Contact No: <br/>
+  	<%= f.text_field :contact_no %> <br/>
+  	
+  	Permanent Address: <br/>
+  	<%= f.text_area :permanent_address %> <br/>
+  	
+  	Present Address: <br/>
+  	<%= f.text_area :present_address %> <br/>
+    
+    Guardian: <br/>
+  	<%= f.text_field :guardian %> <br/>
+    
+    Guardian's Address: <br/>
+  	<%= f.text_area :guardian_address %> <br/>
+  	
+    Guardian's Tel No: <br/>
+  	<%= f.text_field :guardian_telno %> <br/>
+  	
+  	<br/>
+  	<%= f.submit "Save" %>
+  <% end %>
+
+<h1>Confirmed Memberships</h1>
+<% for member in @members %>
+	<% if member.confirm == true %>
+	Organization:<%= member.organization.name %>	Position:<%= member.position %>
+	<% end %>
+<% end %>
+</td>

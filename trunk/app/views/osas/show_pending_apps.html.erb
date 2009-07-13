@@ -1,0 +1,14 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Pending Applications<hr></h2>
+	<% if @pending.empty? %>
+		There's no pending application
+	<% else %>
+		<%= "There #{@pending.size>1?'are':'is'} #{@pending.size} pending application #{@pending.size>1?'s':''} waiting for approval"%>
+	<% end %>
+	<ul>
+		<% for application in @pending %>
+			<li><%= link_to "#{application.name} (#{application.acronym})" , :controller => "osas", :action => "show_forms", :id => application.id %>
+		<% end %>
+	</ul>
+</td>

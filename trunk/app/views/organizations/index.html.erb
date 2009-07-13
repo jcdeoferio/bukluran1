@@ -1,0 +1,12 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+	<h2><hr>Announcements<hr></h2>
+	<h3>Status: <%=h @current_user.status %></h3>
+	<div class = "content">
+		<ul>
+			<% for announcement in @announcements %>
+				<li> <%= announcement.message %><br><br></li>
+			<% end %>
+		<ul>
+	</div>
+</td>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_no: 1
+  name: MyString
+  degree_program: MyString
+  gender: MyString
+  enrolled: false
+  webmail: MyString
+
+two:
+  student_no: 1
+  name: MyString
+  degree_program: MyString
+  gender: MyString
+  enrolled: false
+  webmail: MyString

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-type"
+content="text/html; charset=utf-8" />
+<title>Bukluran</title>
+<%= stylesheet_link_tag 'style' %>
+<% javascript_include_tag "/add_member" %>
+<% javascript_include_tag "/remove_member" %>
+</head>
+<table class = "maintable">
+	<tr>
+		<th colspan = "2" class = "logo_area">  
+		</th>
+	</tr>
+	<tr>
+		<div id='content'>
+		<%= yield %>
+		</div>
+	</tr>
+	<tr>
+		<th colspan = "2" class = "footer_area">
+			<a href="http://www.up.edu.ph">UP System</a>  | 
+      <a href="http://www.upd.edu.ph">UP Diliman</a> | 
+      <a href="http://www.upd.edu.ph/~ovcsa/osa/osa%20description.htm">UPD OSA</a><br>
+			Bukluran Online University Recognition Application System <br>
+			University of the Philippines, Diliman, Quezon city, Philippines. VoIP: (+632) 981-8500.<br>
+			bukluran developers &middot edrosa &middot hirono &middot lee &middot nacu &middot uy
+		</th>
+	</tr>
+</table>
+</html>
