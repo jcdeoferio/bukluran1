@@ -1,0 +1,30 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Activities for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %>: <%= @organization.name %><hr></h2>
+	<% for c in ["Academic Activities", "Advocacy and Extension Service", "UP Community Service", "Organization - Capacity Building Activities"]%>
+		<h3><%= c %></h3>
+		<div class = "content">
+		<% if @events.find_by_category(c) %>
+			<table class = "form_table" border = 1>
+				<tr>
+					<th width = "20%">Name</th>
+					<th width = "15%">Date</th>
+					<th width = "15%">Venue</th>
+					<th width = "35%">Description</th>
+					<th width = "25%">Person in-charge</th>
+				</tr>
+			<% for event in @events.all(:conditions => "category = '#{c}'", :order => "name ASC") %>
+				<tr>
+					<td><%=h event.name %></td>
+					<td><%=h event.date %></td>
+					<td><%=h event.venue %></td>
+					<td><%=h event.description %></td>
+					<td><%= event.head %></td>
+				</tr>
+			<% end %>
+			</table>
+		<% end %>
+		</div>
+	<% end %><br>
+	<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @organization.id %>
+</td>

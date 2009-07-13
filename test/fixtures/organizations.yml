@@ -1,0 +1,39 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  account_id: 1
+  name: MyString
+  acronym: MyString
+  date: 2009-04-02
+  description: MyText
+  nature: MyString
+  category: MyString
+  mailing_address: MyString
+  email_org: MyString
+  email_head: MyString
+  sec_incorporated: false
+  incorporation_date: 2009-04-02
+  interviewed: false
+  status: MyString
+  date_approved: 2009-04-02
+  approved_by: MyString
+  comment: MyText
+
+two:
+  account_id: 1
+  name: MyString
+  acronym: MyString
+  date: 2009-04-02
+  description: MyText
+  nature: MyString
+  category: MyString
+  mailing_address: MyString
+  email_org: MyString
+  email_head: MyString
+  sec_incorporated: false
+  incorporation_date: 2009-04-02
+  interviewed: false
+  status: MyString
+  date_approved: 2009-04-02
+  approved_by: MyString
+  comment: MyText

@@ -1,0 +1,54 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Application Forms: <%= @organization.name %> <hr></h2>
+	<div id = "notification"><%=h flash[:notice] %></div>
+	<div id = "error"><%=h flash[:error] %></div>
+	<h4>Status:	<%=h @organization.status %>
+	</h4>
+	<div class = "content">
+	<%= link_to 'View Application in Printable Format (PDF)', {:format=> 'pdf', :id => @organization.id}, :popup=>true %><br><br>
+	<ul>
+		<li><%= link_to 'Form 1 - Information Sheet', :action => 'form1', :id => @organization.id %></li>
+		<li><%= link_to 'Form 2 - Faculty Adviser, Head and Finance Statement', :controller => 'osas', :action => 'form2', :id => @organization.id %></li>
+		<li><%= link_to 'Form 3 - Roster of All Officers', :action => 'form3', :id => @organization.id %></li>
+		<li><%= link_to 'Form 4 - Roster of All Members', :action => 'form4', :id => @organization.id %></li>
+		<ul>
+			<li><%= link_to 'Send Confirmation', :controller => 'notifier', :action => 'get_confirmation', :id => @organization.id%></li>
+		</ul>
+		<li>Form 5 - Accomplishment Report
+			<ul>
+				<li><%= link_to 'Activities Reports', :action => 'form_reports', :id => @organization.id %></li>
+				<li><%= link_to 'Awards & Citations', :action => 'form_awards', :id => @organization.id %></li>
+			</ul></li>
+		<li><%= link_to 'Form 6 - Calendar of Activities', :action => 'form6', :id => @organization.id %></li>
+		<li><%= link_to 'Form 7 - Acknowledgement', :controller => 'osas', :action => 'form7', :id => @organization.id %><br><br></li>
+		</ul><br>
+		<% if @organization.status == 'Application Pending' %>
+			Post comment to the application (note: comment will be seen by the organization): <br>
+			<% form_tag :controller=>'osas', :action=> 'post_comment', :id => @organization.id do %>
+				<div class="content"><%= text_area 'organization', 'comment', :size => "40x2" %></div>
+				<%= submit_tag 'Post' %>
+			<% end %>
+			<br><br>
+			<table>
+			<th class = "buttons_table">
+				<%= button_to 'Approve', {:action => 'approve', :id => @organization.id}, :confirm => "Are you sure you want to APPROVE #{@organization.name} application?" %></th>
+			<th class = "buttons_table">
+				<%= button_to 'Reject', {:action => 'reject', :id => @organization.id}, :confirm => "Are you sure you want to REJECT #{@organization.name} application?" %></th>
+			</table>
+		<% elsif @organization.status == 'Application Rejected' %>
+			<b>Application Comment:</b><br>
+			<div class = "content"><%=h @organization.comment %></div>
+			<br>
+			<table>
+			<th class = "buttons_table">
+				<%= button_to 'Allow Modify Application', {:action => 'reopen', :id => @organization.id}, :confirm => "Are you sure you want to allow this application to be modified?" %></th>
+			</table>
+			
+		<% else %>
+			<b>Application Comment:</b><br>
+			<div class = "content"><%=h @organization.comment %></div>
+		<% end %>
+	</ul>
+	</div>
+</td>

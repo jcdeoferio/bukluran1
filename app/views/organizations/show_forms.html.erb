@@ -1,0 +1,32 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+		<h2><hr>Application Forms for University Recognition Renewal<hr></h2>
+		<div id='error'><%= flash[:error] %></div>
+		<div id='notification'><%= flash[:notice] %></div>
+		<div class = "content">
+		<strong><font color = 'red'>ALL SCANNED DOCUMENTS MUST HAVE THEIR HARDCOPY SUBMITTED TO OSA OFFICE</font></strong><br><br>
+		Select a form to fill up. <br>
+		<ul class = 'form_list'>
+			<li><%= link_to 'Form 1 - Information Sheet', :action => 'form1' %><br><br></li>
+			<li><%= link_to 'Form 2 - Faculty Adviser, Head and Finance Statement', :controller => 'organizations', :action => 'form2' %><br><br></li>
+			<li><%= link_to 'Form 3 - Roster of All Officers', :controller => 'members', :action => 'form3' %><br><br></li>
+			<li><%= link_to 'Form 4 - Roster of All Members' , :controller => 'members', :action => 'form4' %><br><br></li>
+			<li>Form 5 - Accomplishment Report
+			<ul>
+				<li><%= link_to 'Activities Report', :controller => 'event_reports',:action => 'index', :id => @current_user.id %></li>
+				<li><%= link_to 'Awards & Citations', :controller => 'awards', :action => 'index' %></li>
+			</ul><br></li>
+			<li><%= link_to 'Form 6 - Calendar of Activities', :controller => 'events' %><br><br></li>
+			<li><%= link_to 'Form 7 - Acknowledgement', :controller => 'organizations', :action => 'form7' %><br><br></li>
+		</ul><br>
+		<% if @current_user.comment != "" %>
+			<b>Application Comment:</b><br>
+			<div class = "content"><%= @current_user.comment%></div>
+		<% end %>
+		
+		<br>
+		<% if @current_user.editable %>
+			<%= button_to 'Submit Forms to OSA', {:action => 'submit'}, :confirm => "Are you sure you want to submit these forms to OSA?\n\nNote: You cannot modify the content of the forms once you submitted your application." %>
+		<% end %>
+		</div>
+</td>

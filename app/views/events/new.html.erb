@@ -1,0 +1,37 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+			<h2><hr>Activities for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %><hr></h2>
+			<div id = "error"><%=h flash[:error] %></div>
+			<%= error_messages_for 'event' %>
+			<div class = "content">
+			Add New Event <br><br>
+			<% form_tag '/events/create' do %>
+
+				Select one:
+				<%= select("event", "category", [["Academic Activities"],["Advocacy and Extension Service"],["UP Community Service"],["Organization - Capacity Building Activities"]]) %>
+				<br><br>
+				
+				Title of Activity: <%= text_field 'event', 'name', "sixe"=>"50" %>
+				<br><br>
+				
+				Brief Description of Activity:<br>
+				<%= text_area 'event', 'description', "rows" => "3", "cols" => "60" %><br>
+				<br>
+				
+				Venue: <%= text_field 'event', 'venue', "sixe"=>"60" %>
+				<br><br>
+				
+				<%= date_select('event', 'date', :order => [:month, :day, :year])%>
+				<br><br>
+				
+				Person in Charge: <%= text_field 'event', 'head', "sixe"=>"50" %>
+				<br><br>        
+        <table>
+        <th class = "buttons_table"><%= submit_tag 'Submit' %> </th>
+        <% end %> 
+        <th class = "buttons_table"><%= button_to 'Cancel', :controller => 'events' %></th>
+        </table>
+        </div>
+	
+
+</td>

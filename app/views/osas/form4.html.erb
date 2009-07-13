@@ -1,0 +1,13 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Members for A.Y. <%=h Time.now.year %> - <%=h Time.now.year+1 %>: <%= @organization.name %><hr></h2>
+	<% for member in @members %>
+		<p>
+		Student no: <%=h member.student.student_no %><br>
+		Name: <%=h member.student.name %><br>
+		Position: <%=h member.position %><br>
+		Confirmed: <%=h member.confirm %><br>
+		</p>
+	<% end %>
+<%= button_to 'Back', :action => 'show_forms', :id => @organization.id%>
+</td>

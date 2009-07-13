@@ -1,0 +1,84 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Information Sheet for Student Organizations<hr></h2>
+	<div class = "content forms_form">
+	
+	<b>Official Name of Organization:</b> <%=h @organization.name %> <br>
+	<b>Acronym or other names</b>: <%=h @organization.acronym %> <br>
+	<b>Date Established:</b> <%=h @organization.date_established %> <br>
+	<b>Nature of Organization:</b> <%=h @organization.nature %> <br>
+	<b>Category:</b> <%=h @organization.category %> <br>
+	<b>Mailing Address:</b> <%=h @organization.mailing_address %> <br>
+	<b>Permanent e-mail Address of the Organization:</b> <%=h @organization.email_org %> <br>
+	<b>E-mail Address of the Head of the Organization:</b> <%=h @organization.email_head %> <br>
+	<b>Is Incorporated with Security & Exchange Commission?</b> <%=h (@organization.sec_incorporated)?("Yes, " + @organization.date_incorporation.to_s):"No" %> <br>
+
+	<br>
+	<b>Membership Distribution</b>
+	<table class = "form_table" border = 1>
+	<tr>
+		<th> </th> <th>Sophomores</th> <th>Juniors</th> <th>Seniors</th> <th>Post Grad Courses</th> <th>M.A./M.S.</th> <th>PhD</th> <th>Total</th>
+	</tr>
+	<tr>
+		<th>Male</th>
+		<td><%= @msop %></td> <td><%= @mjun %></td> <td><%= @msen %></td> <td><%= @mpgc %></td> <td><%= @mmas %></td> <td><%= @mphd %></td> <td><%= @mt %></td>
+	</tr>
+	<tr>
+		<th>Female</th>
+		<td><%= @fsop %></td> <td><%= @fjun %></td> <td><%= @fsen %></td> <td><%= @mpgc %></td> <td><%= @fmas %></td> <td><%= @fphd %></td> <td><%= @ft %></td>
+	</tr>
+	<tr>
+		<th>Total</th>
+		<td><%= @msop+@fsop %></td> <td><%= @mjun+@fjun %></td> <td><%= @msen+@fsen %></td> <td><%= @mpgc + @fpgc %></td> <td><%= @mmas + @fmas %></td> <td><%= @mphd + @fphd %></td> <td><%= @mt + @ft %></td>
+	</tr>
+	</table>
+	
+	<br>
+	<b>Faculty Advisers and Co-Adviser/s</b>
+	<table class = "form_table" border = 1>
+	<tr>
+		<th width="5%"></th>
+		<th width="27%">Name</th>
+		<th width="23%">Department/<br>College</th>
+		<th width="20%">Designated Faculty <br> Position and Rank</th>
+		<th width="25%">Contact Info</th>
+	</tr>
+	<tr>
+		<th>Adviser</th>
+		<td><%=h @organization.adviser1_name %></td>
+		<td><%=h @organization.adviser1_dept %></td>
+		<td><%=h @organization.adviser1_position %></td>
+		<td style="text-align: left">Mobile: <%=h @organization.adviser1_mobile %><br>
+			Home: <%=h @organization.adviser1_home %><br>
+			Office: <%=h @organization.adviser1_office %><br>
+			Email:<%=h @organization.adviser1_email %></td>
+	</tr>
+	<tr>
+		<th>Co-Adviser</th>
+		<td><%=h @organization.adviser2_name %></td>
+		<td><%=h @organization.adviser2_dept %></td>
+		<td><%=h @organization.adviser2_position %></td>
+		<td style="text-align: left">Mobile: <%=h @organization.adviser2_mobile %><br>
+			Home: <%=h @organization.adviser2_home %><br>
+			Office: <%=h @organization.adviser2_office %><br>
+			Email: <%=h @organization.adviser2_email %></td>
+	</tr>
+	<tr>
+		<th>Co-Adviser</th>
+		<td><%=h @organization.adviser3_name %></td>
+		<td><%=h @organization.adviser3_dept %></td>
+		<td><%=h @organization.adviser3_position %></td>
+		<td style="text-align: left">Mobile: <%=h @organization.adviser3_mobile %><br>
+			Home: <%=h @organization.adviser3_home %><br>
+			Office: <%=h @organization.adviser3_office %><br>
+			Email: <%=h @organization.adviser3_email %></td>
+	</tr>
+	</table>
+	
+	<br><br>
+  <b>Brief Description</b><br>
+	<p><%=h @organization.description %></p>
+	<br>
+	<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @organization.id %>
+	</div>
+</td>

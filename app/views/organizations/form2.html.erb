@@ -1,0 +1,45 @@
+<%= render :partial => '/organizations/menu' %>
+<td class = "content_area">
+<h2><hr>Faculty Adviser, Head and Finance Statement<hr></h2>
+<strong><font color = 'red'> Note: <br>The system will only accept jpg, jpeg, gif, png, bmp and pdf file format that do not exceed 2 MB.</font></strong><br>
+<div id='error'><%= flash[:error] %></div>
+<div id='notification'><%= flash[:notice] %></div>
+<div class = "content"><br>
+<strong>Upload scanned copy of documents for Faculty Adviser, Head and Finance Statement form here</strong><br><br>
+<% if @editable %>
+	<% form_tag ('/organizations/form2Upload',:multipart => true) do %>
+	<label for="upload_file">Select File</label> : 
+		<%= file_field 'upload','datafile' %>
+		<%= submit_tag 'Upload' %>
+	<% end%><br><br>
+<% end %>
+
+<table border=1>
+<% for filename in @files %>
+	<% pathname = "public/#{@path}/#{filename}"%>
+	<% pathname2 = "#{@path}/#{filename}"%>
+	<tr>
+		<td rowspan=2><%= image_tag(pathname2, :size => "100x100")  %><br>
+	</td>
+		<td colspan=2> <%= filename %></td>
+	</tr>
+	<tr>
+	<td>
+		<%= link_to "View in full size", :action => 'view_form', :pname => pathname2, :form => 'form2'%><br></li>
+	</td>
+	<td>
+		<% if @editable %>
+			<%= link_to "Delete",{:controller => 'organizations', :action => 'deletefile', :pname => pathname, :form => 'form2'}, :confirm => "Are you sure you want to Delete #{filename}?"%></li>
+		<% else %>
+			<%= "Delete" %>
+		<% end %>
+	</td>
+	</tr>
+	<br>
+<% end %>
+</table>
+
+<br><br>
+<%= button_to "Back", :controller => 'organizations', :action => 'show_forms' %>
+</div>
+		
