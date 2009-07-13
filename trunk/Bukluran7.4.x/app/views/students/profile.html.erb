@@ -4,13 +4,11 @@
 		<div id="notification"><%= flash[:notice] %></div>
 		<div id="error"><%= flash[:error] %></div>
 <h1>Membership Confirmation</h1>
-<% for member in @members %>
-	<% if member.confirm != true %>
-	Organization: <%= member.organization.name %>	Position: <%= member.position %><br/>
-	<%= button_to 'Confirm', :action=> 'confirm', :id => @key %>
-	<br/>
-	<% end %>
-<% end %>
+<br>
+Are you a member of the organization: <%= @member.organization.name %> with your	position as <%= @member.position %><br/>
+<%= button_to 'Yes', :action=> 'confirm', :id => @key %>
+<%= button_to 'No', :action=> 'unconfirm', :id => @key %>
+<br/>
 
 <h1>Student Profile</h1>
 Please fill up all nessesary information<br/>

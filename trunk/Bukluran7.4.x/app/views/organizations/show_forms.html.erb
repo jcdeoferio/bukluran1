@@ -23,7 +23,9 @@
 			<b>Application Comment:</b><br>
 			<div class = "content"><%= @current_user.comment%></div>
 		<% end %>
-		
+		<ul>
+			<li><%= link_to 'Send Confirmation', :controller => 'notifier', :action => 'get_confirmation', :id => @organization.id%></li>
+		</ul>
 		<br>
 		<% if @current_user.editable %>
 			<%= button_to 'Submit Forms to OSA', {:action => 'submit'}, :confirm => "Are you sure you want to submit these forms to OSA?\n\nNote: You cannot modify the content of the forms once you submitted your application." %>
