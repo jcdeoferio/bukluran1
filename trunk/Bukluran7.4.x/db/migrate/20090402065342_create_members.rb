@@ -8,6 +8,7 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :year
       t.boolean :confirm
       t.string :confirmation_key
+      t.boolean :sentcnfrm #flag for sent email
 
       t.timestamps
     end
