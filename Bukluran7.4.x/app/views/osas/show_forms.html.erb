@@ -12,9 +12,6 @@
 		<li><%= link_to 'Form 2 - Faculty Adviser, Head and Finance Statement', :controller => 'osas', :action => 'form2', :id => @organization.id %></li>
 		<li><%= link_to 'Form 3 - Roster of All Officers', :action => 'form3', :id => @organization.id %></li>
 		<li><%= link_to 'Form 4 - Roster of All Members', :action => 'form4', :id => @organization.id %></li>
-		<ul>
-			<li><%= link_to 'Send Confirmation', :controller => 'notifier', :action => 'get_confirmation', :id => @organization.id%></li>
-		</ul>
 		<li>Form 5 - Accomplishment Report
 			<ul>
 				<li><%= link_to 'Activities Reports', :action => 'form_reports', :id => @organization.id %></li>
