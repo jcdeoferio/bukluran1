@@ -19,9 +19,12 @@ class NotifierController < ApplicationController
 	def get_confirmation
 	   @org = Organization.find_by_id(params[:id])
 	   for @member in @org.members
-	     @member.confirmation_key = conkey
-	     @member.save
-	     Notifier.deliver_confirm_member(@member, @org)
+	     if @member.sentcnfrm != true
+  	       @member.confirmation_key = conkey
+  	       @member.sentcnfrm = true
+	       @member.save
+	       Notifier.deliver_confirm_member(@member, @org)
+	     end
 	   end
 	   flash[:notice] = "EMAIL CONFIRMATIONS HAVE BEEN SENT"
 	   redirect_to "/osas/show_forms/#{@org.id}"
