@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20090402065519) do
     t.integer  "year"
     t.boolean  "confirm"
     t.string   "confirmation_key"
+    t.boolean  "sentcnfrm"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
