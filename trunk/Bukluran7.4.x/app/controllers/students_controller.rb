@@ -14,6 +14,19 @@ class StudentsController < ApplicationController
      redirect_to "/"
 	end
   end
+  
+  def unconfirm
+    @member = Member.find_by_confirmation_key(params[:id])
+    if @member
+	 @member.confirm = false
+	 @member.save
+	 flash[:notice] = "Membership Rejected"
+	 redirect_to "/students/profile/#{params[:id]}"
+	else
+	 flash[:error] = "INVALID REQUEST"
+     redirect_to "/"
+	end
+  end
 
   def profile
     @member = Member.find_by_confirmation_key(params[:id])
