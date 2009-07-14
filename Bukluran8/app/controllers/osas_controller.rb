@@ -3,6 +3,11 @@ require 'find'
 
 class OsasController < ApplicationController
   before_filter :login_required
+  @organizationList = []
+  @usernameList = []
+  @passwordList = []
+  @emailList = []
+  @total = 0
   def index
     @announcements = Announcement.all
     @pending = Organization.all(:conditions => "status = 'Application Pending'")
@@ -296,6 +301,176 @@ class OsasController < ApplicationController
       @sem = "2ndSem"
     end
     return "#{@schoolyear}/#{org.name}/#{@sem}"
+  end
+  
+  def uporgname
+  end
+  
+  def upusername
+  end
+  
+  def uppassword
+  end
+  
+  def upemail
+  end
+  
+  def uploadOrgName
+	@upload = params[:upload]
+	if @upload['datafile'] == ""
+	   flash[:error] = "Please Choose a File to Upload"
+	else
+	  @name = File.extname("#{@upload['datafile'].original_filename}")
+		if @name == ".txt"
+			@directory_path = "public/data/orgname"
+			post = DataFile.save(params[:upload], @directory_path)
+			@filename = (params[:upload])
+			@filename = @filename['datafile'].original_filename.to_s
+			if File.size("#{@directory_path}/#{@filename}").to_i > 1000000
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
+			else
+				@counter = 0
+				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
+				while (@line = infile.gets)
+					@organizationList[@counter] = @line
+					@counter++
+				end
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:notice] = "File Has Been Uploaded Successfully"
+			end
+		  else
+			flash[:error] = "File format not supported, upload .txt file format only."
+		  end
+	   end
+	   @total = @counter
+	   redirect_to :controller => 'osas', :action => 'uporgname'
+  end
+  
+  def uploadUserName
+	@upload = params[:upload]
+	if @upload['datafile'] == ""
+	   flash[:error] = "Please Choose a File to Upload"
+	else
+	  @name = File.extname("#{@upload['datafile'].original_filename}")
+		if @name == ".txt"
+			@directory_path = "public/data/username"
+			post = DataFile.save(params[:upload], @directory_path)
+			@filename = (params[:upload])
+			@filename = @filename['datafile'].original_filename.to_s
+			if File.size("#{@directory_path}/#{@filename}").to_i > 1000000
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
+			else
+				@counter = 0
+				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
+				while (@line = infile.gets)
+					@usernameList[@counter] = @line
+					@counter++
+				end
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:notice] = "File Has Been Uploaded Successfully"
+			end
+		  else
+			flash[:error] = "File format not supported, upload .txt file format only."
+		  end
+	   end
+	   @total = @counter
+	   redirect_to :controller => 'osas', :action => 'upusername'
+  end
+  
+  def uploadPassword
+  	@upload = params[:upload]
+	if @upload['datafile'] == ""
+	   flash[:error] = "Please Choose a File to Upload"
+	else
+	  @name = File.extname("#{@upload['datafile'].original_filename}")
+		if @name == ".txt"
+			@directory_path = "public/data/password"
+			post = DataFile.save(params[:upload], @directory_path)
+			@filename = (params[:upload])
+			@filename = @filename['datafile'].original_filename.to_s
+			if File.size("#{@directory_path}/#{@filename}").to_i > 1000000
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
+			else
+				@counter = 0
+				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
+				while (@line = infile.gets)
+					@passwordList[@counter] = @line
+					@counter++
+				end
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:notice] = "File Has Been Uploaded Successfully"
+			end
+		  else
+			flash[:error] = "File format not supported, upload .txt file format only."
+		  end
+	   end
+	   @total = @counter
+	   redirect_to :controller => 'osas', :action => 'uppassword'
+  end
+  
+  def uploadEmailAdd
+    @upload = params[:upload]
+	if @upload['datafile'] == ""
+	   flash[:error] = "Please Choose a File to Upload"
+	else
+	  @name = File.extname("#{@upload['datafile'].original_filename}")
+		if @name == ".txt"
+			@directory_path = "public/data/email"
+			post = DataFile.save(params[:upload], @directory_path)
+			@filename = (params[:upload])
+			@filename = @filename['datafile'].original_filename.to_s
+			if File.size("#{@directory_path}/#{@filename}").to_i > 1000000
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
+			else
+				@counter = 0
+				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
+				while (@line = infile.gets)
+					@emailList[@counter] = @line
+					@counter++
+				end
+				File.delete("#{@directory_path}/#{@filename}")
+				flash[:notice] = "File Has Been Uploaded Successfully"
+			end
+		  else
+			flash[:error] = "File format not supported, upload .txt file format only."
+		  end
+	   end
+	   @total = @counter
+	   redirect_to :controller => 'osas', :action => 'upemail'
+  end
+  
+  def createAll
+	@counter = 0
+	@total.times do
+		@organization = Organization.new(:name => @organizationList[@counter])
+		@organization.status = 'Not Renewed'
+		@organization.editable = Osa.find_by_account_id(session[:user_id]).isopen	
+		@account = Account.new(:username => @usernameList[@counter], :password => @passwordList[@counter], :group => 'ORGANIZATION') #try removing the id
+		@organization.account = @account
+		if @account.save and @organization.save
+			@year = Time.now.year
+			if Time.now.month >4 && Time.now.month <11
+				@schoolyear = "#{@year.to_s}-#{(@year+1).to_s}"
+				@sem = "1stSem"
+			else
+				@schoolyear = "#{(@year-1).to_s}-#{@year.to_s}"
+				@sem = "2ndSem"
+			end
+			@newfolder = "public/data/#{@schoolyear}/#{@organization.name}/#{@sem}/"
+			FileUtils.mkdir_p @newfolder+"Form_2"
+			FileUtils.mkdir_p @newfolder+"Form_7"
+			FileUtils.mkdir_p @newfolder+"Events"
+			FileUtils.mkdir_p @newfolder+"Awards"
+			flash[:notice] = "Successfully Created New Organization Account"
+		else
+			flash[:notice] = "Error in creating Organizations"
+		end 
+	end
+	redirect_to :action => 'index'
   end
 
 end
