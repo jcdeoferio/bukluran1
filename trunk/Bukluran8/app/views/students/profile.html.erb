@@ -1,0 +1,58 @@
+<td class = "content_area">
+<div class = "content">
+		<%= error_messages_for 'member' %>
+		<div id="notification"><%= flash[:notice] %></div>
+		<div id="error"><%= flash[:error] %></div>
+<h1>Student Profile</h1>
+Please fill up all nessesary information. <br><br>
+  <% form_for(@student) do |f| %>
+  	<%= f.error_messages %>
+  	
+  	Student Number: <b><%= @student.student_no %></b><br/>
+  	<table border=0>
+  	<tr>
+  		<td>Title: <br/>
+	  	<%= f.text_field :title %> </td>
+	  	<td>Full Name: <br/>
+	  	<%= f.text_field :name %> <br/></td>
+  	 </tr>
+  	 <tr>
+	  	<td>Nickname: <br/>
+	  	<%= f.text_field :nickname %></td>
+	  	 <td>Gender: <br/>
+	  	<%= f.select(:gender, [['Male','m'],['Female','f']]) %></td>
+  	 </tr>
+  	 <tr>
+  	 	<td>College: <br/>
+	  	<%= f.text_field :college %></td>
+		<td>Degree Program: <br/>
+	  	<%= f.select(:degree_program, [['BS','BS'],['BA','BA'],['MS','MS'],['MA','MA'],['MS','MS'],['PhD','PHD'],['Post Grad Course','PGA']]) %></td>
+  	 </tr>
+  	 
+  	 <tr>
+  		<td>Course: <br/>
+	  	<%= f.text_field :course %> </td> 
+	  	<td>Contact No: <br/>
+	  	<%= f.text_field :contact_no %> </td>
+  	 </tr>
+  	 
+  	 <tr>
+  	 	<td>Permanent Address: <br/>
+	  	<%= f.text_area :permanent_address, :size => "24x5" %> </td>
+	  	<td>Present Address: <br/>
+  	<%= f.text_area :present_address, :size => "24x5" %> </td>
+  	 </tr>
+  	 
+  	 <tr>
+  	 	<td>Guardian: <br/>
+	  	<%= f.text_field :guardian %></td>
+  		<td>Guardian's Tel No: <br/>
+	  	<%= f.text_field :guardian_telno %> </td  	
+  	 </tr>  	 
+  	</table>   
+    Guardian's Address: <br/>
+  	<%= f.text_area :guardian_address, :size => "24x5" %> <br/>
+  	<br/>
+  	<%= f.submit "Save" %>
+  <% end %>
+</td>

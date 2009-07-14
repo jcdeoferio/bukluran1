@@ -1,0 +1,18 @@
+
+
+Processing MainController#index (for 112.200.190.245 at 2009-07-14 18:52:18) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAccount Load (1.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (1.0ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 51ms (View: 21, DB: 2) | 200 OK [http://112.200.190.245/]
+
+
+Processing AccountsController#index (for 112.200.190.245 at 2009-07-14 18:52:32) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.0ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAccount Load (0.0ms)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/application
+Rendering accounts/index
+Completed in 30ms (View: 13, DB: 0) | 200 OK [http://112.200.190.245/accounts]

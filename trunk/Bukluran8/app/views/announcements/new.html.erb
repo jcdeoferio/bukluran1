@@ -1,0 +1,12 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Announcements<hr></h2>
+	Add New Announcement: <br><br>
+	<% form_tag '/announcements/create' do %>
+			<%= text_area 'announcement', 'message', :size => "40x2" %><br><br>
+			<table>
+			<th class = "buttons_table"><%= submit_tag 'Post' %></th> 
+	<% end %>
+	<th class = "buttons_table"><%= button_to 'Cancel', :controller=> 'osas', :action=> 'index' %></th>
+	</table>
+</td>

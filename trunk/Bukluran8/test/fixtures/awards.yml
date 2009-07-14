@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  organization_id: 1
+  name: MyString
+  file_path: MyString
+  classification: MyString
+  description: MyString
+  award_giving_body: MyString
+
+two:
+  organization_id: 1
+  name: MyString
+  file_path: MyString
+  classification: MyString
+  description: MyString
+  award_giving_body: MyString

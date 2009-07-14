@@ -1,0 +1,1536 @@
+=> Booting Mongrel
+=> Rails 2.3.2 application starting on http://10.16.3.147:80
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+
+
+Processing MainController#index (for 10.40.71.169 at 2009-07-13 14:14:04) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 6) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 35ms (View: 11, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing MainController#login (for 10.40.71.169 at 2009-07-13 14:14:11) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "controller"=>"main", "login"=>"osa", "password"=>"[FILTERED]"}
+  [4;36;1mAccount Load (0.2ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 6) LIMIT 1[0m
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'osa' AND "accounts"."password" = '12345') LIMIT 1[0m
+Redirected to http://10.16.3.147/osas
+Completed in 9ms (DB: 1) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OsasController#index (for 10.40.71.169 at 2009-07-13 14:14:11) [GET]
+  Parameters: {"action"=>"index", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+  [4;36;1mOrganization Load (0.4ms)[0m   [0;1mSELECT * FROM "organizations" WHERE (status = 'Application Pending') [0m
+  [4;35;1mOsa Load (0.4ms)[0m   [0mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/index
+Rendered osas/_menu (1.9ms)
+Completed in 37ms (View: 14, DB: 1) | 200 OK [http://10.16.3.147/osas]
+
+
+Processing OsasController#new_account (for 10.40.71.169 at 2009-07-13 14:14:13) [GET]
+  Parameters: {"action"=>"new_account", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/new_account
+Rendered osas/_menu (0.6ms)
+Completed in 13ms (View: 6, DB: 0) | 200 OK [http://10.16.3.147/osas/new_account]
+
+
+Processing OsasController#create (for 10.40.71.169 at 2009-07-13 14:14:17) [POST]
+  Parameters: {"name"=>"HEHE", "commit"=>"create", "action"=>"create", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "username"=>"hehe", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;36;1mOsa Load (0.3ms)[0m   [0;1mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mAccount Exists (0.2ms)[0m   [0mSELECT "accounts".id FROM "accounts" WHERE ("accounts"."username" = 'hehe') LIMIT 1[0m
+  [4;36;1mAccount Create (13.4ms)[0m   [0;1mINSERT INTO "accounts" ("updated_at", "username", "password", "group", "created_at") VALUES('2009-07-13 06:14:17', 'hehe', 'affoejiojoho6', 'ORGANIZATION', '2009-07-13 06:14:17')[0m
+  [4;35;1mOrganization Create (0.5ms)[0m   [0mINSERT INTO "organizations" ("name", "nature", "status", "mailing_address", "date_incorporation", "interviewed", "category", "email_org", "adviser2_office", "updated_at", "account_id", "approved_by", "acronym", "email_head", "adviser2_mobile", "adviser3_home", "adviser2_position", "adviser2_home", "adviser1_position", "adviser1_home", "adviser3_name", "adviser3_dept", "description", "adviser2_name", "adviser2_dept", "adviser3_mobile", "date_established", "sec_incorporated", "adviser1_name", "adviser1_dept", "adviser3_office", "date_approved", "adviser1_mobile", "adviser1_email", "editable", "comment", "adviser1_office", "adviser2_email", "adviser3_position", "adviser3_email", "created_at") VALUES('HEHE', '', 'Not Renewed', '', NULL, 'f', '', '', '', '2009-07-13 06:14:17', 4, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 'f', '', '', '', NULL, '', '', 't', '', '', '', '', '', '2009-07-13 06:14:17')[0m
+Redirected to http://10.16.3.147/osas/show_account/4
+Completed in 105ms (DB: 15) | 302 Found [http://10.16.3.147/osas/create]
+
+
+Processing OsasController#show_account (for 10.40.71.169 at 2009-07-13 14:14:17) [GET]
+  Parameters: {"action"=>"show_account", "id"=>"4", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) [0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = '4') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/show_account
+Rendered osas/_menu (0.6ms)
+Completed in 30ms (View: 6, DB: 2) | 200 OK [http://10.16.3.147/osas/show_account/4]
+
+
+Processing MainController#logout (for 10.40.71.169 at 2009-07-13 14:14:22) [GET]
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Redirected to http://10.16.3.147/main
+Completed in 8ms (DB: 0) | 302 Found [http://10.16.3.147/main/logout]
+
+
+Processing MainController#index (for 10.40.71.169 at 2009-07-13 14:14:22) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAnnouncement Load (0.8ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/main]
+
+
+Processing MainController#login (for 10.40.71.169 at 2009-07-13 14:14:27) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "controller"=>"main", "login"=>"hehe", "password"=>"[FILTERED]"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'hehe' AND "accounts"."password" = 'affoejiojoho6') LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations
+Completed in 7ms (DB: 0) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OrganizationsController#index (for 10.40.71.169 at 2009-07-13 14:14:27) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (1.7ms)
+Completed in 38ms (View: 16, DB: 2) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:14:29) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 30ms (View: 13, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:14:31) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 94ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:14:32) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/HEHE/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:14:34) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/organizations_controller.rb:104:in `form2Upload'
+
+Rendered rescues/_trace (29.9ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:14:42) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+Errno::ENOENT (No such file or directory - public/data/2009-2010/HEHE/1stSem/Form_2/circuit.jpg):
+  app/models/data_file.rb:13:in `initialize'
+  app/models/data_file.rb:13:in `open'
+  app/models/data_file.rb:13:in `save'
+  app/controllers/organizations_controller.rb:120:in `form2Upload'
+
+Rendered rescues/_trace (29.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:18:30) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:18:30) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/HEHE/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:18:40) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+Errno::ENOENT (No such file or directory - public/data/2009-2010/HEHE/1stSem/Form_2/circuit.jpg):
+  app/models/data_file.rb:13:in `initialize'
+  app/models/data_file.rb:13:in `open'
+  app/models/data_file.rb:13:in `save'
+  app/controllers/organizations_controller.rb:120:in `form2Upload'
+
+Rendered rescues/_trace (29.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:20:47) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 28ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:20:47) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/HEHE/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:20:53) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:20:53) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/HEHE/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:20:55) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/organizations_controller.rb:104:in `form2Upload'
+
+Rendered rescues/_trace (29.6ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:21:06) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.3>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+Errno::ENOENT (No such file or directory - public/data/2009-2010/HEHE/1stSem/Form_2/circuit.jpg):
+  app/models/data_file.rb:13:in `initialize'
+  app/models/data_file.rb:13:in `open'
+  app/models/data_file.rb:13:in `save'
+  app/controllers/organizations_controller.rb:120:in `form2Upload'
+
+Rendered rescues/_trace (94.9ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:22:01) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:22:01) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/HEHE/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:22:06) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 100ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:22:07) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/HEHE/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:22:18) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/organizations_controller.rb:104:in `form2Upload'
+
+Rendered rescues/_trace (29.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:22:31) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"Dx6mZ8uDGSJl6X7m5cUmrT7jTpHlAILP/8cXr6LuNjM=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.0>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+
+Errno::ENOENT (No such file or directory - public/data/2009-2010/HEHE/1stSem/Form_2/circuit.jpg):
+  app/models/data_file.rb:13:in `initialize'
+  app/models/data_file.rb:13:in `open'
+  app/models/data_file.rb:13:in `save'
+  app/controllers/organizations_controller.rb:120:in `form2Upload'
+
+Rendered rescues/_trace (30.3ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:23:31) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form1 (for 10.40.71.169 at 2009-07-13 14:23:32) [GET]
+  Parameters: {"action"=>"form1", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 4) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 4) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form1
+Rendered organizations/_menu (0.5ms)
+Completed in 93ms (View: 73, DB: 1) | 200 OK [http://10.16.3.147/organizations/form1]
+
+
+Processing OrganizationsController#form1 (for 10.40.71.169 at 2009-07-13 14:39:47) [GET]
+  Parameters: {"action"=>"form1", "controller"=>"organizations"}
+Redirected to http://10.16.3.147/main
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 9ms (DB: 0) | 302 Found [http://10.16.3.147/organizations/form1]
+
+
+Processing MainController#index (for 10.40.71.169 at 2009-07-13 14:39:47) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mAnnouncement Load (0.8ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/main]
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:39:47) [GET]
+  Parameters: {"action"=>"form2Upload", "controller"=>"organizations"}
+Redirected to http://10.16.3.147/main
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (DB: 0) | 302 Found [http://10.16.3.147/organizations/form2Upload]
+
+
+Processing AccountsController#index (for 10.40.71.169 at 2009-07-13 14:41:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mAccount Load (1.4ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/application
+Rendering accounts/index
+Completed in 15ms (View: 9, DB: 1) | 200 OK [http://10.16.3.147/accounts]
+
+
+Processing AccountsController#show (for 10.40.71.169 at 2009-07-13 14:42:26) [GET]
+  Parameters: {"action"=>"show", "id"=>"2", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering accounts/show
+Completed in 12ms (View: 5, DB: 0) | 200 OK [http://10.16.3.147/accounts/show/2]
+
+
+Processing MainController#index (for 10.40.71.169 at 2009-07-13 14:42:36) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAnnouncement Load (0.8ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing MainController#login (for 10.40.71.169 at 2009-07-13 14:42:51) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"main", "login"=>"org", "password"=>"[FILTERED]"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'org' AND "accounts"."password" = 'afcrpxcocm4nk') LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations
+Completed in 7ms (DB: 0) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OrganizationsController#index (for 10.40.71.169 at 2009-07-13 14:42:51) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (0.5ms)
+Completed in 30ms (View: 7, DB: 2) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:43:14) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:43:16) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:43:24) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations/form2
+Completed in 28ms (DB: 1) | 302 Found [http://10.16.3.147/organizations/form2Upload]
+
+
+Processing OrganizationsController#form2 (for 10.40.71.169 at 2009-07-13 14:43:24) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.169 at 2009-07-13 14:43:30) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/organizations_controller.rb:104:in `form2Upload'
+
+Rendered rescues/_trace (99.2ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainController#index (for 10.40.71.177 at 2009-07-13 14:44:33) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mAnnouncement Load (1.0ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 8ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:47:19) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.169 at 2009-07-13 14:47:22) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 29ms (View: 7, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:47:22) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 10.40.71.160 at 2009-07-13 14:47:31) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAnnouncement Load (1.0ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 8ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing OrganizationsController#form7Upload (for 10.40.71.169 at 2009-07-13 14:47:33) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form7Upload", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations/form7
+Completed in 25ms (DB: 1) | 302 Found [http://10.16.3.147/organizations/form7Upload]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.169 at 2009-07-13 14:47:33) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:47:33) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#view_form (for 10.40.71.169 at 2009-07-13 14:47:37) [GET]
+  Parameters: {"action"=>"view_form", "controller"=>"organizations", "form"=>"form7", "pname"=>"data/2009-2010/UP Organization/1stSem/Form_7/Form7"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/view_form
+Rendered organizations/_menu (0.5ms)
+Completed in 24ms (View: 5, DB: 1) | 200 OK [http://10.16.3.147/organizations/view_form?form=form7&pname=data%2F2009-2010%2FUP+Organization%2F1stSem%2FForm_7%2FForm7]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:47:37) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form7 (for 10.40.71.169 at 2009-07-13 14:47:38) [POST]
+  Parameters: {"action"=>"form7", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:47:39) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form7 (for 10.40.71.169 at 2009-07-13 14:47:41) [POST]
+  Parameters: {"action"=>"form7", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.169 at 2009-07-13 14:47:41) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#index (for 10.40.71.169 at 2009-07-13 14:47:48) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mAnnouncement Load (0.2ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 7, DB: 1) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:47:49) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 28ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form1 (for 10.40.71.169 at 2009-07-13 14:47:51) [GET]
+  Parameters: {"action"=>"form1", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form1
+Rendered organizations/_menu (0.5ms)
+Completed in 35ms (View: 17, DB: 1) | 200 OK [http://10.16.3.147/organizations/form1]
+
+
+Processing MainController#logout (for 10.40.71.169 at 2009-07-13 14:47:54) [GET]
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/main
+Completed in 7ms (DB: 0) | 302 Found [http://10.16.3.147/main/logout]
+
+
+Processing MainController#index (for 10.40.71.169 at 2009-07-13 14:47:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mAnnouncement Load (1.0ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 73ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/main]
+
+
+Processing AccountsController#index (for 10.40.71.169 at 2009-07-13 14:48:04) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;36;1mAccount Load (1.4ms)[0m   [0;1mSELECT * FROM "accounts" [0m
+Rendering template within layouts/application
+Rendering accounts/index
+Completed in 10ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/accounts]
+
+
+Processing AccountsController#show (for 10.40.71.169 at 2009-07-13 14:48:05) [GET]
+  Parameters: {"action"=>"show", "id"=>"2", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) [0m
+Rendering template within layouts/application
+Rendering accounts/show
+Completed in 9ms (View: 2, DB: 0) | 200 OK [http://10.16.3.147/accounts/show/2]
+
+
+Processing MainController#login (for 10.40.71.160 at 2009-07-13 14:48:30) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"main", "login"=>"org", "password"=>"[FILTERED]"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'org' AND "accounts"."password" = 'afcrpxcocm4nk') LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations
+Completed in 8ms (DB: 0) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OrganizationsController#index (for 10.40.71.160 at 2009-07-13 14:48:30) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mAnnouncement Load (0.2ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 7, DB: 1) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:48:33) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.6ms)
+Completed in 28ms (View: 9, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#change_password (for 10.40.71.160 at 2009-07-13 14:48:34) [GET]
+  Parameters: {"action"=>"change_password", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/change_password
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 7, DB: 1) | 200 OK [http://10.16.3.147/organizations/change_password]
+
+
+Processing OrganizationsController#update_account (for 10.40.71.160 at 2009-07-13 14:48:58) [POST]
+  Parameters: {"commit"=>"Change Password", "action"=>"update_account", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "org"=>{"confirm_password"=>"[FILTERED]", "current_password"=>"[FILTERED]", "new_password"=>"[FILTERED]"}, "id"=>"1", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.8ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."id" = 1) [0m
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) [0m
+  [4;35;1mAccount Update (0.3ms)[0m   [0mUPDATE "accounts" SET "password" = '12345', "updated_at" = '2009-07-13 06:48:59' WHERE "id" = 2[0m
+Redirected to http://10.16.3.147/organizations/change_password
+Completed in 28ms (DB: 2) | 302 Found [http://10.16.3.147/organizations/update_account/1]
+
+
+Processing OrganizationsController#change_password (for 10.40.71.160 at 2009-07-13 14:48:59) [GET]
+  Parameters: {"action"=>"change_password", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/change_password
+Rendered organizations/_menu (0.6ms)
+Completed in 89ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/change_password]
+
+
+Processing OrganizationsController#index (for 10.40.71.160 at 2009-07-13 14:49:01) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (0.5ms)
+Completed in 28ms (View: 7, DB: 2) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:49:03) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form2 (for 10.40.71.160 at 2009-07-13 14:49:04) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing OrganizationsController#form2Upload (for 10.40.71.160 at 2009-07-13 14:49:27) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations/form2
+Completed in 27ms (DB: 1) | 302 Found [http://10.16.3.147/organizations/form2Upload]
+
+
+Processing OrganizationsController#form2 (for 10.40.71.160 at 2009-07-13 14:49:27) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:49:33) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.160 at 2009-07-13 14:49:44) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 28ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.160 at 2009-07-13 14:49:44) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#view_form (for 10.40.71.160 at 2009-07-13 14:49:53) [GET]
+  Parameters: {"action"=>"view_form", "controller"=>"organizations", "form"=>"form7", "pname"=>"data/2009-2010/UP Organization/1stSem/Form_7/Form7"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/view_form
+Rendered organizations/_menu (0.5ms)
+Completed in 20ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/organizations/view_form?form=form7&pname=data%2F2009-2010%2FUP+Organization%2F1stSem%2FForm_7%2FForm7]
+
+
+Processing ApplicationController#index (for 10.40.71.160 at 2009-07-13 14:49:53) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form7 (for 10.40.71.160 at 2009-07-13 14:49:55) [POST]
+  Parameters: {"action"=>"form7", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.6ms)
+Completed in 93ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.160 at 2009-07-13 14:49:55) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form7Upload (for 10.40.71.160 at 2009-07-13 14:50:06) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form7Upload", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations/form7
+Completed in 25ms (DB: 1) | 302 Found [http://10.16.3.147/organizations/form7Upload]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.160 at 2009-07-13 14:50:06) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing ApplicationController#index (for 10.40.71.160 at 2009-07-13 14:50:06) [GET]
+
+ActionController::RoutingError (No route matches "/images/data/2009-2010/UP%20Organization/1stSem/Form_7/Form7" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:50:24) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing EventReportsController#index (for 10.40.71.160 at 2009-07-13 14:50:27) [GET]
+  Parameters: {"action"=>"index", "id"=>"1", "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/index
+Rendered organizations/_menu (0.6ms)
+Completed in 31ms (View: 9, DB: 1) | 200 OK [http://10.16.3.147/event_reports/index/1]
+
+
+Processing EventReportsController#upload_process (for 10.40.71.160 at 2009-07-13 14:50:29) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"upload_process", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/event_reports_controller.rb:32:in `upload_process'
+
+Rendered rescues/_trace (30.7ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing AccountsController#index (for 10.40.71.169 at 2009-07-13 14:50:38) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mAccount Load (1.2ms)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/application
+Rendering accounts/index
+Completed in 9ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/accounts]
+
+
+Processing AccountsController#show (for 10.40.71.169 at 2009-07-13 14:50:40) [GET]
+  Parameters: {"action"=>"show", "id"=>"3", "controller"=>"accounts"}
+  [4;36;1mAccount Load (0.2ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 3) [0m
+Rendering template within layouts/application
+Rendering accounts/show
+Completed in 8ms (View: 2, DB: 0) | 200 OK [http://10.16.3.147/accounts/show/3]
+
+
+Processing EventReportsController#upload_process (for 10.40.71.160 at 2009-07-13 14:50:41) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"upload_process", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.2>}, "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.1ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/event_reports
+Completed in 94ms (DB: 1) | 302 Found [http://10.16.3.147/event_reports/upload_process]
+
+
+Processing EventReportsController#index (for 10.40.71.160 at 2009-07-13 14:50:42) [GET]
+  Parameters: {"action"=>"index", "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/index
+Rendered organizations/_menu (0.6ms)
+Completed in 27ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/event_reports]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:50:45) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing AwardsController#index (for 10.40.71.160 at 2009-07-13 14:50:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"awards"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/index
+Rendered organizations/_menu (0.5ms)
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "awards" WHERE ("awards".organization_id = 1) [0m
+Completed in 35ms (View: 11, DB: 1) | 200 OK [http://10.16.3.147/awards]
+
+
+Processing AwardsController#upload_certificate (for 10.40.71.160 at 2009-07-13 14:50:56) [POST]
+  Parameters: {"action"=>"upload_certificate", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"awards"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/upload_certificate
+Rendered organizations/_menu (0.6ms)
+Completed in 32ms (View: 7, DB: 1) | 200 OK [http://10.16.3.147/awards/upload_certificate]
+
+
+Processing AwardsController#upload_process (for 10.40.71.160 at 2009-07-13 14:51:10) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"upload_process", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.606.1>}, "controller"=>"awards"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Redirected to http://10.16.3.147/awards/upload_certificate
+Completed in 25ms (DB: 1) | 302 Found [http://10.16.3.147/awards/upload_process]
+
+
+Processing AwardsController#upload_certificate (for 10.40.71.160 at 2009-07-13 14:51:10) [GET]
+  Parameters: {"action"=>"upload_certificate", "controller"=>"awards"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/upload_certificate
+Rendered organizations/_menu (0.6ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/awards/upload_certificate]
+
+
+Processing AwardsController#view_form (for 10.40.71.160 at 2009-07-13 14:51:13) [GET]
+  Parameters: {"action"=>"view_form", "controller"=>"awards", "pname"=>"/data/2009-2010/UP Organization/1stSem/Awards/MonJul1314511008002009.png"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/view_form
+Rendered organizations/_menu (0.6ms)
+Completed in 25ms (View: 6, DB: 1) | 200 OK [http://10.16.3.147/awards/view_form?pname=%2Fdata%2F2009-2010%2FUP+Organization%2F1stSem%2FAwards%2FMonJul1314511008002009.png]
+
+
+Processing AwardsController#upload_certificate (for 10.40.71.160 at 2009-07-13 14:51:19) [POST]
+  Parameters: {"action"=>"upload_certificate", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"awards"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/upload_certificate
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/awards/upload_certificate]
+
+
+Processing AwardsController#index (for 10.40.71.160 at 2009-07-13 14:51:20) [POST]
+  Parameters: {"action"=>"index", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"awards"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/index
+Rendered organizations/_menu (0.5ms)
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "awards" WHERE ("awards".organization_id = 1) [0m
+Completed in 29ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/awards]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:51:27) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (1.0ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 28ms (View: 9, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing EventReportsController#index (for 10.40.71.160 at 2009-07-13 14:51:32) [GET]
+  Parameters: {"action"=>"index", "id"=>"1", "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/index
+Rendered organizations/_menu (0.6ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/event_reports/index/1]
+
+
+Processing EventReportsController#view_form (for 10.40.71.160 at 2009-07-13 14:51:34) [GET]
+  Parameters: {"action"=>"view_form", "controller"=>"event_reports", "pname"=>"/data/2009-2010/UP Organization/1stSem/Events/MonJul1314504208002009.png"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/view_form
+Rendered organizations/_menu (0.5ms)
+Completed in 22ms (View: 5, DB: 1) | 200 OK [http://10.16.3.147/event_reports/view_form?pname=%2Fdata%2F2009-2010%2FUP+Organization%2F1stSem%2FEvents%2FMonJul1314504208002009.png]
+
+
+Processing EventReportsController#index (for 10.40.71.160 at 2009-07-13 14:51:39) [POST]
+  Parameters: {"action"=>"index", "authenticity_token"=>"8zWKdErlfKlNnrXcjVCba0eU39RXGn4DjYzI2ztiRPQ=", "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/index
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/event_reports]
+
+
+Processing MainController#index (for 10.40.71.169 at 2009-07-13 14:55:50) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mAnnouncement Load (1.0ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 8ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing MainController#login (for 10.40.71.169 at 2009-07-13 14:55:54) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"main", "login"=>"org", "password"=>"[FILTERED]"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'org' AND "accounts"."password" = '12345') LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations
+Completed in 8ms (DB: 0) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OrganizationsController#index (for 10.40.71.169 at 2009-07-13 14:55:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mAnnouncement Load (0.2ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 7, DB: 1) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:55:56) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.169 at 2009-07-13 14:55:58) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.6ms)
+Completed in 28ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:56:06) [POST]
+  Parameters: {"action"=>"show_forms", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.169 at 2009-07-13 14:56:12) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing OrganizationsController#form7Upload (for 10.40.71.169 at 2009-07-13 14:56:13) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form7Upload", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of ActiveRecord::Base.
+The error occurred while evaluating nil.[]):
+  app/controllers/organizations_controller.rb:143:in `form7Upload'
+
+Rendered rescues/_trace (30.1ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.160 at 2009-07-13 14:56:19) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form7 (for 10.40.71.160 at 2009-07-13 14:56:24) [GET]
+  Parameters: {"action"=>"form7", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form7
+Rendered organizations/_menu (0.5ms)
+Completed in 99ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/organizations/form7]
+
+
+Processing AwardsController#index (for 10.40.71.169 at 2009-07-13 14:56:29) [GET]
+  Parameters: {"action"=>"index", "controller"=>"awards"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/index
+Rendered organizations/_menu (0.6ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "awards" WHERE ("awards".organization_id = 1) [0m
+Completed in 31ms (View: 4, DB: 2) | 200 OK [http://10.16.3.147/awards]
+
+
+Processing AwardsController#upload_certificate (for 10.40.71.169 at 2009-07-13 14:56:30) [POST]
+  Parameters: {"action"=>"upload_certificate", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"awards"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/upload_certificate
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/awards/upload_certificate]
+
+
+Processing AwardsController#index (for 10.40.71.169 at 2009-07-13 14:56:32) [POST]
+  Parameters: {"action"=>"index", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"awards"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/index
+Rendered organizations/_menu (0.5ms)
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "awards" WHERE ("awards".organization_id = 1) [0m
+Completed in 29ms (View: 4, DB: 1) | 200 OK [http://10.16.3.147/awards]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:56:34) [POST]
+  Parameters: {"action"=>"show_forms", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 28ms (View: 9, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing EventReportsController#index (for 10.40.71.169 at 2009-07-13 14:56:36) [GET]
+  Parameters: {"action"=>"index", "id"=>"1", "controller"=>"event_reports"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/index
+Rendered organizations/_menu (0.5ms)
+Completed in 26ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/event_reports/index/1]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:56:38) [POST]
+  Parameters: {"action"=>"show_forms", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 25ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing AwardsController#index (for 10.40.71.169 at 2009-07-13 14:56:40) [GET]
+  Parameters: {"action"=>"index", "controller"=>"awards"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering awards/index
+Rendered organizations/_menu (0.6ms)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "awards" WHERE ("awards".organization_id = 1) [0m
+Completed in 98ms (View: 5, DB: 2) | 200 OK [http://10.16.3.147/awards]
+
+
+Processing OrganizationsController#show_forms (for 10.40.71.169 at 2009-07-13 14:56:52) [POST]
+  Parameters: {"action"=>"show_forms", "authenticity_token"=>"+bBUSxDJ6SJaNmLb0yuei6qVZte422hs3bMWU1bVpxs=", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 27ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing EventReportsController#index (for 10.40.71.169 at 2009-07-13 14:56:54) [GET]
+  Parameters: {"action"=>"index", "id"=>"1", "controller"=>"event_reports"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering event_reports/index
+Rendered organizations/=> Booting Mongrel
+=> Rails 2.3.2 application starting on http://10.16.3.147:80
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+
+
+Processing MainController#index (for 10.40.80.165 at 2009-07-13 15:35:30) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAnnouncement Load (1.1ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 27ms (View: 11, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing AccountsController#index (for 10.40.80.165 at 2009-07-13 15:35:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"accounts"}
+  [4;35;1mAccount Load (0.8ms)[0m   [0mSELECT * FROM "accounts" [0m
+Rendering template within layouts/application
+Rendering accounts/index
+Completed in 11ms (View: 6, DB: 1) | 200 OK [http://10.16.3.147/accounts]
+
+
+Processing AccountsController#new (for 10.40.80.165 at 2009-07-13 15:35:37) [GET]
+  Parameters: {"action"=>"new", "controller"=>"accounts"}
+Rendering template within layouts/application
+Rendering accounts/new
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://10.16.3.147/accounts/new]
+
+
+Processing AccountsController#create (for 10.40.80.165 at 2009-07-13 15:35:43) [POST]
+  Parameters: {"commit"=>"Create", "account"=>{"username"=>"osa", "group"=>"OSA", "password"=>"[FILTERED]"}, "action"=>"create", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "controller"=>"accounts"}
+  [4;36;1mAccount Exists (0.2ms)[0m   [0;1mSELECT "accounts".id FROM "accounts" WHERE ("accounts"."username" = 'osa') LIMIT 1[0m
+  [4;35;1mAccount Create (0.5ms)[0m   [0mINSERT INTO "accounts" ("updated_at", "username", "password", "group", "created_at") VALUES('2009-07-13 07:35:43', 'osa', '12345', 'OSA', '2009-07-13 07:35:43')[0m
+  [4;36;1mOsa Create (0.4ms)[0m   [0;1mINSERT INTO "osas" ("updated_at", "account_id", "isopen", "coordinator", "created_at") VALUES('2009-07-13 07:35:43', NULL, 'f', 'osa', '2009-07-13 07:35:43')[0m
+  [4;35;1mOsa Update (0.4ms)[0m   [0mUPDATE "osas" SET "account_id" = 1, "updated_at" = '2009-07-13 07:35:43' WHERE "id" = 1[0m
+Redirected to http://10.16.3.147/accounts/show/1?controler=accounts
+Completed in 40ms (DB: 1) | 302 Found [http://10.16.3.147/accounts/create]
+
+
+Processing AccountsController#show (for 10.40.80.165 at 2009-07-13 15:35:43) [GET]
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"accounts", "controler"=>"accounts"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering accounts/show
+Completed in 11ms (View: 5, DB: 0) | 200 OK [http://10.16.3.147/accounts/show/1?controler=accounts]
+
+
+Processing ApplicationController#index (for 10.40.80.165 at 2009-07-13 15:35:47) [GET]
+
+ActionController::RoutingError (No route matches "/%5C" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#index (for 10.40.80.165 at 2009-07-13 15:35:54) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mAnnouncement Load (1.0ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing ApplicationController#index (for 10.40.80.165 at 2009-07-13 15:35:58) [GET]
+
+ActionController::RoutingError (No route matches "/hello" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainController#login (for 10.40.80.165 at 2009-07-13 15:36:07) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "controller"=>"main", "login"=>"osa", "password"=>"[FILTERED]"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'osa' AND "accounts"."password" = '12345') LIMIT 1[0m
+Redirected to http://10.16.3.147/osas
+Completed in 8ms (DB: 0) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OsasController#index (for 10.40.80.165 at 2009-07-13 15:36:07) [GET]
+  Parameters: {"action"=>"index", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;36;1mAnnouncement Load (0.2ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+  [4;35;1mOrganization Load (0.3ms)[0m   [0mSELECT * FROM "organizations" WHERE (status = 'Application Pending') [0m
+  [4;36;1mOsa Load (0.3ms)[0m   [0;1mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/index
+Rendered osas/_menu (2.0ms)
+Completed in 92ms (View: 72, DB: 1) | 200 OK [http://10.16.3.147/osas]
+
+
+Processing OsasController#new_account (for 10.40.80.165 at 2009-07-13 15:36:11) [GET]
+  Parameters: {"action"=>"new_account", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/new_account
+Rendered osas/_menu (0.6ms)
+Completed in 14ms (View: 7, DB: 0) | 200 OK [http://10.16.3.147/osas/new_account]
+
+
+Processing OsasController#show_pending_apps (for 10.40.80.165 at 2009-07-13 15:36:14) [GET]
+  Parameters: {"action"=>"show_pending_apps", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.4ms)[0m   [0mSELECT * FROM "organizations" WHERE (status = 'Application Pending') [0m
+Rendering template within layouts/application
+Rendering osas/show_pending_apps
+Rendered osas/_menu (0.6ms)
+Completed in 17ms (View: 5, DB: 1) | 200 OK [http://10.16.3.147/osas/show_pending_apps]
+
+
+Processing OsasController#index (for 10.40.80.165 at 2009-07-13 15:36:14) [GET]
+  Parameters: {"action"=>"index", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+  [4;36;1mOrganization Load (0.4ms)[0m   [0;1mSELECT * FROM "organizations" WHERE (status = 'Application Pending') [0m
+  [4;35;1mOsa Load (0.4ms)[0m   [0mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/index
+Rendered osas/_menu (0.6ms)
+Completed in 84ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/osas]
+
+
+Processing OsasController#start_app (for 10.40.80.165 at 2009-07-13 15:36:16) [POST]
+  Parameters: {"action"=>"start_app", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "controller"=>"osas", "contorller"=>"osas"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mOrganization Update (0.4ms)[0m   [0mUPDATE "organizations" SET editable = 'true' [0m
+  [4;36;1mOrganization Update (0.3ms)[0m   [0;1mUPDATE "organizations" SET status = 'Not Renewed' [0m
+  [4;35;1mOsa Update (2.2ms)[0m   [0mUPDATE "osas" SET isopen = 'true' [0m
+  [4;36;1mOrganization Load (0.3ms)[0m   [0;1mSELECT * FROM "organizations" [0m
+Redirected to http://10.16.3.147/osas
+Completed in 19ms (DB: 4) | 302 Found [http://10.16.3.147/osas/start_app?contorller=osas]
+
+
+Processing OsasController#index (for 10.40.80.165 at 2009-07-13 15:36:16) [GET]
+  Parameters: {"action"=>"index", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;36;1mAnnouncement Load (0.2ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+  [4;35;1mOrganization Load (0.4ms)[0m   [0mSELECT * FROM "organizations" WHERE (status = 'Application Pending') [0m
+  [4;36;1mOsa Load (0.4ms)[0m   [0;1mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/index
+Rendered osas/_menu (0.6ms)
+Completed in 22ms (View: 3, DB: 1) | 200 OK [http://10.16.3.147/osas]
+
+
+Processing OsasController#new_account (for 10.40.80.165 at 2009-07-13 15:36:17) [GET]
+  Parameters: {"action"=>"new_account", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/new_account
+Rendered osas/_menu (0.6ms)
+Completed in 10ms (View: 3, DB: 0) | 200 OK [http://10.16.3.147/osas/new_account]
+
+
+Processing OsasController#create (for 10.40.80.165 at 2009-07-13 15:36:24) [POST]
+  Parameters: {"name"=>"UP Organization", "commit"=>"create", "action"=>"create", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "username"=>"hello", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mOsa Load (0.4ms)[0m   [0mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;36;1mAccount Exists (0.2ms)[0m   [0;1mSELECT "accounts".id FROM "accounts" WHERE ("accounts"."username" = 'hello') LIMIT 1[0m
+  [4;35;1mAccount Create (0.4ms)[0m   [0mINSERT INTO "accounts" ("updated_at", "username", "password", "group", "created_at") VALUES('2009-07-13 07:36:24', 'hello', 'af4le816zmjc2', 'ORGANIZATION', '2009-07-13 07:36:24')[0m
+  [4;36;1mOrganization Create (0.5ms)[0m   [0;1mINSERT INTO "organizations" ("name", "nature", "status", "mailing_address", "date_incorporation", "interviewed", "category", "email_org", "adviser2_office", "updated_at", "account_id", "approved_by", "acronym", "email_head", "adviser2_mobile", "adviser3_home", "adviser2_position", "adviser2_home", "adviser1_position", "adviser1_home", "adviser3_name", "adviser3_dept", "description", "adviser2_name", "adviser2_dept", "adviser3_mobile", "date_established", "sec_incorporated", "adviser1_name", "adviser1_dept", "adviser3_office", "date_approved", "adviser1_mobile", "adviser1_email", "editable", "comment", "adviser1_office", "adviser2_email", "adviser3_position", "adviser3_email", "created_at") VALUES('UP Organization', '', 'Not Renewed', '', NULL, 'f', '', '', '', '2009-07-13 07:36:24', 2, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 'f', '', '', '', NULL, '', '', 't', '', '', '', '', '', '2009-07-13 07:36:24')[0m
+Redirected to http://10.16.3.147/osas/show_account/2
+Completed in 105ms (DB: 2) | 302 Found [http://10.16.3.147/osas/create]
+
+
+Processing OsasController#show_account (for 10.40.80.165 at 2009-07-13 15:36:24) [GET]
+  Parameters: {"action"=>"show_account", "id"=>"2", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) [0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = '2') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/show_account
+Rendered osas/_menu (0.6ms)
+Completed in 29ms (View: 6, DB: 2) | 200 OK [http://10.16.3.147/osas/show_account/2]
+
+
+Processing MainController#logout (for 10.40.80.165 at 2009-07-13 15:36:30) [GET]
+  Parameters: {"action"=>"logout", "controller"=>"main"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Redirected to http://10.16.3.147/main
+Completed in 7ms (DB: 0) | 302 Found [http://10.16.3.147/main/logout]
+
+
+Processing MainController#index (for 10.40.80.165 at 2009-07-13 15:36:30) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;35;1mAnnouncement Load (0.8ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 7ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/main]
+
+
+Processing MainController#login (for 10.40.80.165 at 2009-07-13 15:36:35) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "controller"=>"main", "login"=>"hello", "password"=>"[FILTERED]"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'hello' AND "accounts"."password" = 'af4le816zmjc2') LIMIT 1[0m
+Redirected to http://10.16.3.147/organizations
+Completed in 8ms (DB: 0) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OrganizationsController#index (for 10.40.80.165 at 2009-07-13 15:36:35) [GET]
+  Parameters: {"action"=>"index", "controller"=>"organizations"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;36;1mAnnouncement Load (0.2ms)[0m   [0;1mSELECT * FROM "announcements" [0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/index
+Rendered organizations/_menu (1.6ms)
+Completed in 37ms (View: 16, DB: 2) | 200 OK [http://10.16.3.147/organizations]
+
+
+Processing OrganizationsController#show_forms (for 10.40.80.165 at 2009-07-13 15:36:37) [GET]
+  Parameters: {"action"=>"show_forms", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/show_forms
+Rendered organizations/_menu (0.5ms)
+Completed in 30ms (View: 13, DB: 1) | 200 OK [http://10.16.3.147/organizations/show_forms]
+
+
+Processing OrganizationsController#form2 (for 10.40.80.165 at 2009-07-13 15:36:39) [GET]
+  Parameters: {"action"=>"form2", "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (1.0ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering organizations/form2
+Rendered organizations/_menu (0.6ms)
+Completed in 32ms (View: 8, DB: 1) | 200 OK [http://10.16.3.147/organizations/form2]
+
+
+Processing ApplicationController#index (for 10.40.80.165 at 2009-07-13 15:36:39) [GET]
+
+ActionController::RoutingError (No route matches "/data/2009-2010/UP%20Organization/1stSem/Form_2/Form2" with {:method=>:get}):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing OrganizationsController#form2Upload (for 10.40.80.165 at 2009-07-13 15:36:51) [POST]
+  Parameters: {"commit"=>"Upload", "action"=>"form2Upload", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "upload"=>{"datafile"=>#<File:/tmp/RackMultipart.3808.1>}, "controller"=>"organizations"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mOrganization Load (0.9ms)[0m   [0mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = 2) LIMIT 1[0m
+
+Errno::ENOENT (No such file or directory - public/data/2009-2010/UP Organization/1stSem/Form_2/Winter.jpg):
+  app/models/data_file.rb:13:in `initialize'
+  app/models/data_file.rb:13:in `open'
+  app/models/data_file.rb:13:in `save'
+  app/controllers/organizations_controller.rb:120:in `form2Upload'
+
+Rendered rescues/_trace (95.0ms)
+Rendered rescues/_request_and_response (1.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainController#index (for 10.40.80.165 at 2009-07-13 15:39:40) [GET]
+  Parameters: {"action"=>"index", "controller"=>"main"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+Rendering template within layouts/application
+Rendering main/index
+Completed in 12ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/]
+
+
+Processing MainController#login (for 10.40.80.165 at 2009-07-13 15:39:44) [POST]
+  Parameters: {"commit"=>"login", "action"=>"login", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "controller"=>"main", "login"=>"osa", "password"=>"[FILTERED]"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 2) LIMIT 1[0m
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."username" = 'osa' AND "accounts"."password" = '12345') LIMIT 1[0m
+Redirected to http://10.16.3.147/osas
+Completed in 8ms (DB: 1) | 302 Found [http://10.16.3.147/main/login]
+
+
+Processing OsasController#index (for 10.40.80.165 at 2009-07-13 15:39:44) [GET]
+  Parameters: {"action"=>"index", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAnnouncement Load (0.2ms)[0m   [0mSELECT * FROM "announcements" [0m
+  [4;36;1mOrganization Load (0.3ms)[0m   [0;1mSELECT * FROM "organizations" WHERE (status = 'Application Pending') [0m
+  [4;35;1mOsa Load (0.3ms)[0m   [0mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/index
+Rendered osas/_menu (0.6ms)
+Completed in 22ms (View: 2, DB: 1) | 200 OK [http://10.16.3.147/osas]
+
+
+Processing OsasController#new_account (for 10.40.80.165 at 2009-07-13 15:39:47) [GET]
+  Parameters: {"action"=>"new_account", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.4ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/application
+Rendering osas/new_account
+Rendered osas/_menu (0.6ms)
+Completed in 11ms (View: 3, DB: 0) | 200 OK [http://10.16.3.147/osas/new_account]
+
+
+Processing OsasController#create (for 10.40.80.165 at 2009-07-13 15:39:58) [POST]
+  Parameters: {"name"=>"New Organization 2", "commit"=>"create", "action"=>"create", "authenticity_token"=>"YZpwMOoUyvhba8ce4s5Dmhy/rzxLHwxcZweRHKPYwnY=", "username"=>"org2", "controller"=>"osas"}
+  [4;35;1mAccount Load (0.4ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;36;1mOsa Load (0.3ms)[0m   [0;1mSELECT * FROM "osas" WHERE ("osas"."account_id" = 1) LIMIT 1[0m
+WARNING: Can't mass-assign these protected attributes: id
+  [4;35;1mAccount Exists (0.2ms)[0m   [0mSELECT "accounts".id FROM "accounts" WHERE ("accounts"."username" = 'org2') LIMIT 1[0m
+  [4;36;1mAccount Create (0.3ms)[0m   [0;1mINSERT INTO "accounts" ("updated_at", "username", "password", "group", "created_at") VALUES('2009-07-13 07:39:58', 'org2', 'afbejkenp5zak', 'ORGANIZATION', '2009-07-13 07:39:58')[0m
+  [4;35;1mOrganization Create (0.5ms)[0m   [0mINSERT INTO "organizations" ("name", "nature", "status", "mailing_address", "date_incorporation", "interviewed", "category", "email_org", "adviser2_office", "updated_at", "account_id", "approved_by", "acronym", "email_head", "adviser2_mobile", "adviser3_home", "adviser2_position", "adviser2_home", "adviser1_position", "adviser1_home", "adviser3_name", "adviser3_dept", "description", "adviser2_name", "adviser2_dept", "adviser3_mobile", "date_established", "sec_incorporated", "adviser1_name", "adviser1_dept", "adviser3_office", "date_approved", "adviser1_mobile", "adviser1_email", "editable", "comment", "adviser1_office", "adviser2_email", "adviser3_position", "adviser3_email", "created_at") VALUES('New Organization 2', '', 'Not Renewed', '', NULL, 'f', '', '', '', '2009-07-13 07:39:58', 3, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, 'f', '', '', '', NULL, '', '', 't', '', '', '', '', '', '2009-07-13 07:39:58')[0m
+Redirected to http://10.16.3.147/osas/show_account/3
+Completed in 65ms (DB: 2) | 302 Found [http://10.16.3.147/osas/create]
+
+
+Processing OsasController#show_account (for 10.40.80.165 at 2009-07-13 15:39:58) [GET]
+  Parameters: {"action"=>"show_account", "id"=>"3", "controller"=>"osas"}
+  [4;36;1mAccount Load (0.3ms)[0m   [0;1mSELECT * FROM "accounts" WHERE ("accounts"."id" = 1) LIMIT 1[0m
+  [4;35;1mAccount Load (0.3ms)[0m   [0mSELECT * FROM "accounts" WHERE ("accounts"."id" = 3) [0m
+  [4;36;1mOrganization Load (0.9ms)[0m   [0;1mSELECT * FROM "organizations" WHERE ("organizations"."account_id" = '3') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering o
