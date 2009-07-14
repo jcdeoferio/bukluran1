@@ -1,0 +1,8 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>View Form<hr></h2>
+		<%= image_tag(@pathname, :width =>800) %>
+		<br><br>
+		<%= button_to "Back", :controller => 'osas', :action => @form , :id => @data.id%>
+		
+</td>

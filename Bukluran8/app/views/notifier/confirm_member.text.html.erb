@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />  </head>  
+<body>
+  Office of Student Activities<br>
+	University of the Philippines<br>
+  Diliman, Quezon City
+	<br><br>
+	Greetings!<br>
+	<br>
+	The <strong><%= @org.name.upcase %></strong> has listed you, with student number <b><%= @member.student.student_no %></b>, as <%= @member.position.upcase %> of the organization in their application for university recognition.
+	<br><br>	
+	Click the link below to confirm your membership and edit your profile. <br><br>
+	<%= link_to 'Confirm my membership', "http://112.200.190.245:3000/students/confirm/#{@member.confirmation_key}" %><br><br>
+	
+	If you are not affiliated with <%= @org.name.upcase %>, please delete this message immediately.<br><br>
+	
+	Sincerely yours,<br>
+	UP Office of Student Activities<br><br>
+	
+	<font color="red"><b>Note: This message is machine generated and will expire when the recognition period closes.</b></font><br><br>
+	
+</body>
+</html> 

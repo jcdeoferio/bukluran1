@@ -1,0 +1,14 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>New Organization<hr></h2>
+	<div class = "content">
+		<%= error_messages_for 'account' %>
+		<div id="notification"><%= flash[:notice] %></div>
+		<div id="error"><%= flash[:error] %></div><br><br>
+		Organization Name: <b><%= @name %></b> <br>
+		Username: <b><%= @account.username %></b> <br>
+		Password: <b><%= @account.password %></b> <br>
+		<br><br>
+		<%= button_to 'Back', :controller => 'osas', :action => 'new_account'%>
+	</div>
+</td>

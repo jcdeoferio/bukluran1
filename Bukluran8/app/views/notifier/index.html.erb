@@ -1,0 +1,14 @@
+<td class = "content_area">
+<h2>FORGOT PASSWORD</h2>
+<div class = "content">
+If you forgot your username please go to OSA office. Bring valid identification.<br><br>
+<strong><font color = 'green'> Request will be sent in organization's head e-mail account</font></strong><br>
+	<% form_tag '/notifier/get_password' do %><br>
+		<label>USERNAME:</label><br>
+		<%= text_field_tag 'username' %><br><br>
+		<%= submit_tag 'send' %>
+	<% end %>
+	<br><Br>
+	Note: If no email was received within an hour after request for password retrival was made, please report to OSA office.
+</div>
+</td>

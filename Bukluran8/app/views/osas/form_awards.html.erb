@@ -1,0 +1,34 @@
+<%= render :partial => '/osas/menu' %>
+<td class = "content_area">
+	<h2><hr>Awards and Citations: <%= @organization.name %><hr></h2>
+	<div class = "content">
+		<% unless @awards.empty? %>
+			<table class = "form_table" border = 1>
+				<tr>
+					<th width = "25%">Award/Citation</th>
+					<th width = "10%">Classification</th>
+					<th width = "40%">Description</th>
+					<th width = "25%">Award-Giving Body</th>
+				</tr>
+			<% for award in @awards.all(:order => "name ASC") %>
+				<tr>
+					<td><%=h award.name %></td>
+					<td><%=h award.classification %></td>
+					<td><%=h award.description %></td>
+					<td><%=h award.award_giving_body %></td>
+				</tr>
+			<% end %>
+			</table>
+		<% end %><br>
+		
+		<ul>
+			<% for filename in @files %>
+				 <% pathname = "#{@path}/#{filename}"%>
+				 <%= image_tag(pathname, :size => "100x100")  %><br>
+				 <li><%= link_to "View #{filename} in full size", :action => 'view_form', :id => @organization.id, :pname => pathname, :form => 'form_awards'%><br><br>
+			<% end %>
+			<br><br>
+		</ul>
+		</div>
+	<%= button_to "Back", :controller => 'osas', :action => 'show_forms', :id => @organization.id %>
+</td>
