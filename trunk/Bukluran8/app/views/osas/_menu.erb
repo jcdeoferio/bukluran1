@@ -4,7 +4,11 @@
 			<li><%= link_to 'Announcements', :controller => 'osas', :action => 'index' %>
 				<li><%= link_to 'Pending Applications', :controller => 'osas', :action => 'show_pending_apps' %>
 				<li><%= link_to 'Create Organization Account', :controller => 'osas', :action => 'new_account'%>
-				<li><%= link_to 'Organization Listing', :controller => 'osas', :action => 'search' %>
+				<li><%= link_to 'Organization Listing', :controller => 'osas', :action => 'search' %>				
+				<li><%= link_to 'Upload Org Name List', :controller => 'osas', :action => 'uporgname' %>
+				<li><%= link_to 'Upload Username List', :controller => 'osas', :action => 'upusername' %>
+				<li><%= link_to 'Upload Password List', :controller => 'osas', :action => 'uppassword' %>
+				<li><%= link_to 'Upload Email List', :controller => 'osas', :action => 'upemail' %>
         <li><%= link_to 'Logout', :controller => 'main', :action => 'logout' %>
 	</ul>
 </td>
