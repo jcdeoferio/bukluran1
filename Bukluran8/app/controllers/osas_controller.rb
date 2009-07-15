@@ -331,18 +331,19 @@ class OsasController < ApplicationController
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
 				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
-				while (@line = infile.gets)
-					@organizationList[@counter] = @line
-					@counter++
-				end
+				File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+					@infile.each_line('.'){ |@line|
+						@organizationList << @line
+						@counter++
+					}
+				}
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
-		  else
+		else
 			flash[:error] = "File format not supported, upload .txt file format only."
-		  end
-	   end
+		end
+	end
 	   @total = @counter
 	   redirect_to :controller => 'osas', :action => 'uporgname'
   end
@@ -363,11 +364,12 @@ class OsasController < ApplicationController
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
 				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
-				while (@line = infile.gets)
-					@usernameList[@counter] = @line
-					@counter++
-				end
+				File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+					@infile.each_line('.') { |@line|
+						@usernameList << @line
+						@counter++
+					}
+				}
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
@@ -394,12 +396,12 @@ class OsasController < ApplicationController
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
-				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
-				while (@line = infile.gets)
-					@passwordList[@counter] = @line
-					@counter++
-				end
+				File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+					@infile.each_line('.') { |@line|
+						@passwordList << @line
+						@counter++
+					}
+				}
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
@@ -427,11 +429,10 @@ class OsasController < ApplicationController
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
 				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "r") do |infile|
-				while (@line = infile.gets)
-					@emailList[@counter] = @line
-					@counter++
-				end
+				File.open("#{@directory_path}/#{@filename}", "rb") { |@infile|
+					@infile.each_line('.'){ |@line| 
+					@emailList << @line
+					@counter++}}
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
