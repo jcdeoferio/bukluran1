@@ -3,11 +3,6 @@ require 'find'
 
 class OsasController < ApplicationController
   before_filter :login_required
-  @organizationList = []
-  @usernameList = []
-  @passwordList = []
-  @emailList = []
-  @total = 0
   def index
     @announcements = Announcement.all
     @pending = Organization.all(:conditions => "status = 'Application Pending'")
@@ -330,21 +325,12 @@ class OsasController < ApplicationController
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
-				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
-					@infile.each_line('.'){ |@line|
-						@organizationList << @line
-						@counter++
-					}
-				}
-				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
 		else
 			flash[:error] = "File format not supported, upload .txt file format only."
 		end
 	end
-	   @total = @counter
 	   redirect_to :controller => 'osas', :action => 'uporgname'
   end
   
@@ -363,21 +349,12 @@ class OsasController < ApplicationController
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
-				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
-					@infile.each_line('.') { |@line|
-						@usernameList << @line
-						@counter++
-					}
-				}
-				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
 		  else
 			flash[:error] = "File format not supported, upload .txt file format only."
 		  end
 	   end
-	   @total = @counter
 	   redirect_to :controller => 'osas', :action => 'upusername'
   end
   
@@ -396,20 +373,12 @@ class OsasController < ApplicationController
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
-				File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
-					@infile.each_line('.') { |@line|
-						@passwordList << @line
-						@counter++
-					}
-				}
-				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
 		  else
 			flash[:error] = "File format not supported, upload .txt file format only."
 		  end
 	   end
-	   @total = @counter
 	   redirect_to :controller => 'osas', :action => 'uppassword'
   end
   
@@ -428,23 +397,46 @@ class OsasController < ApplicationController
 				File.delete("#{@directory_path}/#{@filename}")
 				flash[:error] = "Filesize to big only file size lessthan 1 MB is accepted"
 			else
-				@counter = 0
-				File.open("#{@directory_path}/#{@filename}", "rb") { |@infile|
-					@infile.each_line('.'){ |@line| 
-					@emailList << @line
-					@counter++}}
-				File.delete("#{@directory_path}/#{@filename}")
 				flash[:notice] = "File Has Been Uploaded Successfully"
 			end
-		  else
+		else
 			flash[:error] = "File format not supported, upload .txt file format only."
-		  end
-	   end
-	   @total = @counter
+		end
+	end
 	   redirect_to :controller => 'osas', :action => 'upemail'
   end
   
   def createAll
+	@total = 0
+	@directory_path = "public/data/orgname"
+	File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+		@infile.each_line('.') { |@line|
+			@organizationList << @line
+		}
+	}
+	File.delete("#{@directory_path}")
+	@directory_path = "public/data/username"
+	File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+		@infile.each_line('.') { |@line|
+			@usernameList << @line
+		}
+	}
+	File.delete(@directory_path)
+	@directory_path = "public/data/password"
+	File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+		@infile.each_line('.') { |@line|
+			@passwordList << @line
+		}
+	}
+	File.delete("#{@directory_path}")
+	@directory_path = "public/data/email"
+	File.open("#{@directory_path}/#{@filename}", "r") { |@infile|
+		@infile.each_line('.') { |@line|
+			@emailList << @line
+			@total++
+		}
+	}
+	File.delete("#{@directory_path}")
 	@counter = 0
 	@total.times do
 		@organization = Organization.new(:name => @organizationList[@counter])
