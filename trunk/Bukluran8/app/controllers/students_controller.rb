@@ -54,6 +54,13 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
+	
+	#
+	# [@student.title, @student.nickname, @student.name, @student.college, @student.gender, @student.degree_program, @student.contact_no, @student.permanent_address, @student.present_address, @student.guardian, @student.guardian_telno, @student.guardian_address].each do |f|
+    #  f.strip!
+    #end
+    #@profile_completeness = @student.title != "" and @student.nickname != "" and @student.name != "" and @student.college != "" and @student.gender != "" and @student.degree_program != "" and @student.contact_no != "" and ( @student.present_address != "" or @student.permanent_address != "" or @student.guardian != "" or @student.guardian_telno != "" ) and @student.guardian_address != ""
+ 
     if @student.update_attributes(params[:student])
       flash[:notice] = "Profile has been updated!"
       redirect_to :controller => "students", :action => "conof"
